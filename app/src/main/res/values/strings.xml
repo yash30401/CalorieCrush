@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Calorie Crush</string>
     <string name="google_maps_key">AIzaSyCPlp5vNFNta5xz14TJqIa87pavVNgILPo</string>
-    <string name="mainLightPurple">#8978D9</string>
-    <string name="bottomBarDark">#675BA3</string>
-    <string name="timerColor">#707070</string>
-    <string name="welcomeScreenEdittext">#F5F5F6</string>
-    <string name="hintColor">#414141</string>
+
 </resources>
