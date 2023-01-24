@@ -12,6 +12,7 @@ class SetupActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySetupBinding
     private lateinit var slideUp: Animation
     private lateinit var fadeIn:Animation
+    private lateinit var slideSlow:Animation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivitySetupBinding.inflate(layoutInflater)
@@ -19,6 +20,7 @@ class SetupActivity : AppCompatActivity() {
 
         slideUp = AnimationUtils.loadAnimation(this,R.anim.slide_up)
         fadeIn = AnimationUtils.loadAnimation(this,R.anim.fade_in)
+        slideSlow=AnimationUtils.loadAnimation(this,R.anim.slide_up_slow)
 
         startAnimation()
     }
@@ -27,5 +29,6 @@ class SetupActivity : AppCompatActivity() {
         binding.etName.animation=slideUp
         binding.imageView.animation=fadeIn
         binding.imageView.animation=fadeIn
+        binding.enterWeightBtn.animation=slideSlow
     }
 }

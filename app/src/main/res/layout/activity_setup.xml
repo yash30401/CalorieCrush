@@ -59,4 +59,20 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/enterWeightBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/enterWeight"
+        android:backgroundTint="@color/mainLightPurple"
+        app:cornerRadius="10dp"
+        android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
