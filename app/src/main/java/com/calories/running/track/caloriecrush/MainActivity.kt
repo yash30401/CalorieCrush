@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.calories.running.track.caloriecrush.DB.RunDao
-import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity() {
+
 
 
 
