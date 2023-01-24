@@ -4,8 +4,10 @@ import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 
 @Entity(tableName = "running_table")
+@TypeConverters(Converters::class)
 data class Run(
     var img: Bitmap? = null,
     var timestamp: Long = 0L,
