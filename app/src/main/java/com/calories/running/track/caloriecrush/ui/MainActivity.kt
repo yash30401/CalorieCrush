@@ -1,14 +1,11 @@
-package com.calories.running.track.caloriecrush
+package com.calories.running.track.caloriecrush.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.calories.running.track.caloriecrush.DB.RunDao
+import com.calories.running.track.caloriecrush.R
 
 
 class MainActivity : AppCompatActivity() {
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
