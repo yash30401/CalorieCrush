@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-30dp"
         android:layout_marginTop="-30dp"
+        android:alpha="0.8"
         android:src="@drawable/welcome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,11 +67,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/enterWeight"
         android:backgroundTint="@color/mainLightPurple"
-        app:cornerRadius="10dp"
         android:fontFamily="@font/poppins"
         android:includeFontPadding="false"
+        android:text="@string/enterWeight"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
@@ -80,27 +81,69 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterWeightBtn"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:np_dividerColor="@color/hintColor"
-        app:np_height="70dp"
-        app:np_max="300"
-        app:np_min="20"
-        app:np_dividerLength="60dp"
-        app:np_dividerType="underline"
         app:np_dividerDistance="100dp"
-       app:np_dividerThickness="1dp"
+
+        app:np_dividerLength="60dp"
+        app:np_dividerThickness="1dp"
+        app:np_dividerType="underline"
+        app:np_height="70dp"
         app:np_itemSpacing="10dp"
 
+        app:np_max="300"
+        app:np_min="20"
+        app:np_orientation="horizontal"
         app:np_selectedTextColor="@color/colorPrimary"
+
         app:np_selectedTextSize="50sp"
         app:np_textColor="@color/colorPrimary"
         app:np_textSize="30sp"
-
-        app:np_orientation="horizontal"
         app:np_value="3"
         app:np_width="200dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/kg"
+        android:includeFontPadding="false"
+        android:textSize="30sp"
+        android:fontFamily="@font/poppins_medium"
+        android:textStyle="bold"
+        android:textColor="@color/mainLightPurple"
+        app:layout_constraintEnd_toEndOf="@+id/enterWeightBtn"
+        app:layout_constraintStart_toStartOf="@+id/enterWeightBtn"
+        app:layout_constraintTop_toBottomOf="@+id/enterWeightBtn" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-70dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number_picker"
+        app:srcCompat="@drawable/run_vector" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/continueText"
+        android:textColor="@color/mainLightPurple"
+        android:textSize="22sp"
+        android:includeFontPadding="false"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
