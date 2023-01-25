@@ -122,7 +122,7 @@
             android:id="@+id/kgChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkable="false"
+            android:checkable="true"
             app:chipBackgroundColor="@android:color/transparent"
             app:chipStrokeColor="@color/hintColor"
 
