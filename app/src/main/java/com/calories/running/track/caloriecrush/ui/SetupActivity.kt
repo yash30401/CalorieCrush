@@ -27,7 +27,7 @@ class SetupActivity : AppCompatActivity() {
         slideLeft=AnimationUtils.loadAnimation(this,R.anim.slide_left)
         slideUpAndFadeIn=AnimationUtils.loadAnimation(this,R.anim.slide_up_and_fadein)
 
-        startAnimation()
+        startAnimation()// Starting Button And Editext Animation when First Time Screen Starts
 
         binding.enterWeightBtn.setOnClickListener {
             binding.kgText.visibility= View.VISIBLE
