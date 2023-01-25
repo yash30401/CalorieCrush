@@ -1,5 +1,6 @@
 package com.calories.running.track.caloriecrush.ui
 
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -30,11 +31,52 @@ class SetupActivity : AppCompatActivity() {
         startAnimation()// Starting Button And Editext Animation when First Time Screen Starts
 
         binding.enterWeightBtn.setOnClickListener {
-            binding.kgText.visibility= View.VISIBLE
+
             binding.numberPicker.visibility=View.VISIBLE
 
-            binding.kgText.animation=slideUpAndFadeIn
+
             binding.numberPicker.animation=slideUpAndFadeIn
+        }
+
+        binding.kgChip.setOnClickListener {
+            binding.poundsChip.isCheckable=false
+            binding.poundsChip.chipStrokeColor =
+                ColorStateList.valueOf(resources.getColor(R.color.hintColor))
+            binding.poundsChip.chipBackgroundColor =
+                ColorStateList.valueOf(resources.getColor(com.google.android.material.R.color.mtrl_btn_transparent_bg_color))
+            binding.poundsChip.setTextColor(resources.getColor(R.color.black))
+
+
+
+            binding.kgChip.isCheckable=true
+
+                binding.kgChip.chipStrokeColor =
+                    ColorStateList.valueOf(resources.getColor(R.color.bottomBarDark))
+                binding.kgChip.chipBackgroundColor =
+                    ColorStateList.valueOf(resources.getColor(R.color.chipBg))
+                binding.kgChip.setTextColor(resources.getColor(R.color.bottomBarDark))
+
+
+        }
+
+        binding.poundsChip.setOnClickListener {
+
+            binding.kgChip.isCheckable=false
+            binding.kgChip.chipStrokeColor =
+                ColorStateList.valueOf(resources.getColor(R.color.hintColor))
+            binding.kgChip.chipBackgroundColor =
+                ColorStateList.valueOf(resources.getColor(com.google.android.material.R.color.mtrl_btn_transparent_bg_color))
+            binding.kgChip.setTextColor(resources.getColor(R.color.black))
+
+            binding.poundsChip.isCheckable=true
+
+            binding.poundsChip.chipStrokeColor =
+                ColorStateList.valueOf(resources.getColor(R.color.bottomBarDark))
+            binding.poundsChip.chipBackgroundColor =
+                ColorStateList.valueOf(resources.getColor(R.color.chipBg))
+            binding.poundsChip.setTextColor(resources.getColor(R.color.bottomBarDark))
+
+
         }
 
     }

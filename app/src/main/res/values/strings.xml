@@ -6,6 +6,7 @@
     <string name="welcomeMessage">Welcome!\nEnter Your First Name\nAnd Weight.</string>
     <string name="name">Name</string>
     <string name="enterWeight">Enter Weight</string>
-    <string name="kg">KG</string>
+    <string name="kg">Kilograms</string>
     <string name="continueText">Continue ></string>
+    <string name="pounds">Pounds</string>
 </resources>

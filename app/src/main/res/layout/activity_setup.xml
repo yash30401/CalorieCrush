@@ -85,7 +85,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kgText"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
         app:np_dividerColor="@color/hintColor"
         app:np_dividerDistance="100dp"
         android:visibility="gone"
@@ -106,23 +106,41 @@
         app:np_value="3"
         app:np_width="200dp" />
 
-    <TextView
-        android:id="@+id/kgText"
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/kg"
-        android:includeFontPadding="false"
-        android:textSize="30sp"
-        android:visibility="gone"
-        android:fontFamily="@font/poppins_medium"
-        android:textStyle="bold"
-        android:textColor="@color/mainLightPurple"
-        app:layout_constraintEnd_toEndOf="@+id/enterWeightBtn"
-        app:layout_constraintStart_toStartOf="@+id/enterWeightBtn"
-        app:layout_constraintTop_toBottomOf="@+id/enterWeightBtn" />
+        android:layout_marginTop="20dp"
+        app:chipSpacingHorizontal="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterWeightBtn">
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/kgChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="false"
+            app:chipBackgroundColor="@android:color/transparent"
+            app:chipStrokeColor="@color/hintColor"
 
+            app:chipStrokeWidth="1.2dp"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:text="@string/kg" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/poundsChip"
+            android:layout_width="wrap_content"
+            android:checkable="true"
+            app:chipBackgroundColor="@android:color/transparent"
+            app:chipStrokeColor="@color/hintColor"
+            app:chipStrokeWidth="1dp"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:text="@string/pounds" />
+
+    </com.google.android.material.chip.ChipGroup>
 
     <TextView
         android:id="@+id/continueBtn"

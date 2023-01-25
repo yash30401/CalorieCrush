@@ -11,6 +11,11 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MyApp.Chip.Choice</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ThemeOverlay.MyApp.Chip.Choice" parent="">
+    <item name="elevationOverlayEnabled">false</item>
     </style>
 </resources>
