@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.SetupActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-30dp"
-        android:layout_marginTop="-30dp"
-        android:alpha="0.6"
-        android:src="@drawable/welcome"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="-30dp"-->
+<!--        android:layout_marginTop="-30dp"-->
+<!--        android:alpha="0.6"-->
+<!--        android:src="@drawable/welcome"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/welcomeText"
@@ -48,6 +48,7 @@
         app:startIconDrawable="@drawable/baseline_person_24"
         app:hintTextColor="@color/hintColor"
         android:textColorHint="@color/hintColor"
+        app:boxStrokeWidth="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeText">

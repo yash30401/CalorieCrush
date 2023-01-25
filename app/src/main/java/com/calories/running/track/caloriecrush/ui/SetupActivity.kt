@@ -41,8 +41,8 @@ class SetupActivity : AppCompatActivity() {
 
     private fun startAnimation() {
         binding.etName.animation=slideUp
-        binding.imageView.animation=fadeIn
-        binding.imageView.animation=fadeIn
+//        binding.imageView.animation=fadeIn
+
         binding.enterWeightBtn.animation=slideSlow
         binding.continueBtn.animation=slideLeft
     }
