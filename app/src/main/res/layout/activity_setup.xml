@@ -95,7 +95,7 @@
         app:np_height="70dp"
         app:np_itemSpacing="10dp"
 
-        app:np_max="300"
+        app:np_max="700"
         app:np_min="20"
         app:np_orientation="horizontal"
         app:np_selectedTextColor="@color/colorPrimary"
