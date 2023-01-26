@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:icon="@drawable/baseline_directions_run_24"
+        app:showAsAction="always"
+        android:title="Your Runs"/>
+
+    <item android:id="@+id/marketFragment"
+        android:enabled="true"
+        android:icon="@drawable/baseline_insights_24"
+        app:showAsAction="always"
+        android:title="Statistics"/>
+
+    <item android:id="@+id/watchlistFragment"
+        android:enabled="true"
+        android:icon="@drawable/baseline_settings_24"
+        app:showAsAction="always"
+        android:title="Setting"/>
+
+</menu>

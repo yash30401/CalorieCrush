@@ -101,4 +101,8 @@ dependencies {
     implementation 'io.github.ShawnLin013:number-picker:2.4.13'
 
 
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+
+    implementation 'nl.joery.animatedbottombar:library:1.1.0'
+
 }

@@ -14,4 +14,6 @@
     <color name="timerColor">#707070</color>
     <color name="welcomeScreenEdittext">#F5F5F6</color>
     <color name="hintColor">#414141</color>
+    <color name="baseline_grey">#E9E9E9</color>
+    <color name="rippleColorBottomBar">#8ADBD8EC</color>
 </resources>
