@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentManager
 import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.databinding.FragmentRunBinding
 import com.calories.running.track.caloriecrush.other.Constants.REQUEST_CODE_LOCATION_PERMISSION
@@ -20,11 +21,18 @@ import pub.devrel.easypermissions.EasyPermissions
 class RunFragment : Fragment(R.layout.fragment_run) {
 
     private lateinit var binding: FragmentRunBinding
+    private lateinit var fragment: FragmentManager
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRunBinding.bind(view)
 
         requestFineLocationPermissions()
+
+        fragment = requireActivity().supportFragmentManager
+
+        binding.addRunBtnFloating.setOnClickListener {
+            fragment.beginTransaction().add(R.id.mainactivity,TrackingFragment()).addToBackStack("run").commit()
+        }
 
     }
 
