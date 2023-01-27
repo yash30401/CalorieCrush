@@ -1,5 +1,6 @@
 package com.calories.running.track.caloriecrush.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.databinding.FragmentTrackingBinding
+import com.calories.running.track.caloriecrush.other.Constants.ACTION_START_OR_RESUME_SERVICE
+import com.calories.running.track.caloriecrush.services.TrackingService
 import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -26,6 +29,11 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         binding = FragmentTrackingBinding.bind(view)
 
         binding.mapView.onCreate(savedInstanceState)
+
+        binding.btnStart.setOnClickListener {
+            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+        }
+
         binding.mapView.getMapAsync {
             map=it
         }
@@ -33,6 +41,12 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         viewmodel = ViewModelProvider(this).get(RunningViewmodel::class.java)
 
     }
+
+    private fun sendCommandToService(action:String)=
+        Intent(requireContext(),TrackingService::class.java).also {
+            it.action=action
+            requireContext().startService(it)
+        }
 
     override fun onResume() {
         super.onResume()
