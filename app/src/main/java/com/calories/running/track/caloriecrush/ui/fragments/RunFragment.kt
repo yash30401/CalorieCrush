@@ -24,7 +24,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRunBinding.bind(view)
 
-        requestLocationPermissions()
+        requestFineLocationPermissions()
 
     }
 
@@ -32,38 +32,55 @@ class RunFragment : Fragment(R.layout.fragment_run) {
 
 
 
-    private var currentPermissionIndex = 0
-    private val permissions = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_BACKGROUND_LOCATION)
 
-    private fun requestLocationPermissions() {
-        if (currentPermissionIndex >= permissions.size) {
-            // All permissions have been granted
-            return
-        }
-        if (ContextCompat.checkSelfPermission(requireContext(), permissions[currentPermissionIndex]) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), permissions[currentPermissionIndex])) {
-                Toast.makeText(context, "Please grant permissions to Use App", Toast.LENGTH_LONG).show()
+
+    private fun requestFineLocationPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) != PERMISSION_GRANTED) {
+
+            //When permission is not granted by user, show them message why this permission is needed.
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Toast.makeText(context, "Please grant permissions to record audio", Toast.LENGTH_LONG)
+                    .show()
+
+                //Give user option to still opt-in the permissions
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    101
+                ) } else {
+
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    101)
             }
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(permissions[currentPermissionIndex]), 101)
-        } else {
-            currentPermissionIndex++
-            requestLocationPermissions()
+        } else if (ContextCompat.checkSelfPermission(
+                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PERMISSION_GRANTED) {
+
+             //IF PERMISSION GRANTED
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    //Handling Permission callback
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             101 -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //permission granted
-                    requestLocationPermissions()
-                } else {
-                    //permission denied
-                }
-                currentPermissionIndex++
+                if (grantResults.size > 0
+                    && grantResults[0] == PERMISSION_GRANTED
+                ) {
+                    // permission was granted, yay!
 
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(context, "Permissions Denied to record audio", Toast.LENGTH_LONG)
+                        .show()
+                }
                 return
             }
         }
