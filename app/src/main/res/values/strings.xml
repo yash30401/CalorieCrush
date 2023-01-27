@@ -9,4 +9,7 @@
     <string name="kg">Kilograms</string>
     <string name="continueText">Continue ></string>
     <string name="pounds">Pounds</string>
+    <string name="start">Start</string>
+    <string name="resume">Resume</string>
+    <string name="finish">Finish</string>
 </resources>
