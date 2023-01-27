@@ -29,36 +29,43 @@ class RunFragment : Fragment(R.layout.fragment_run) {
     }
 
 
-
-
-
-
-
     private fun requestFineLocationPermissions() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) != PERMISSION_GRANTED) {
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PERMISSION_GRANTED
+        ) {
 
             //When permission is not granted by user, show them message why this permission is needed.
             if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Toast.makeText(context, "Please grant permissions to record audio", Toast.LENGTH_LONG)
+                    requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            ) {
+                Toast.makeText(
+                    context,
+                    "Please grant permissions to record audio",
+                    Toast.LENGTH_LONG
+                )
                     .show()
 
                 //Give user option to still opt-in the permissions
                 ActivityCompat.requestPermissions(
                     requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     101
-                ) } else {
+                )
+            } else {
 
                 ActivityCompat.requestPermissions(
                     requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    101)
+                    101
+                )
             }
         } else if (ContextCompat.checkSelfPermission(
-                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PERMISSION_GRANTED) {
+                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PERMISSION_GRANTED
+        ) {
 
-             //IF PERMISSION GRANTED
+            //IF PERMISSION GRANTED
         }
     }
 
@@ -66,7 +73,8 @@ class RunFragment : Fragment(R.layout.fragment_run) {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray) {
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             101 -> {
@@ -85,8 +93,6 @@ class RunFragment : Fragment(R.layout.fragment_run) {
             }
         }
     }
-
-
 
 
 }
