@@ -46,9 +46,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
 
             //When permission is not granted by user, show them message why this permission is needed.
             if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            ) {
+                    requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
                 Toast.makeText(
                     context,
                     "Please grant permissions to record audio",
@@ -57,12 +55,6 @@ class RunFragment : Fragment(R.layout.fragment_run) {
                     .show()
 
                 //Give user option to still opt-in the permissions
-                ActivityCompat.requestPermissions(
-                    requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    101
-                )
-            } else {
-
                 ActivityCompat.requestPermissions(
                     requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     101

@@ -6,14 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.databinding.FragmentTrackingBinding
+import com.calories.running.track.caloriecrush.other.Constants.ACTION_PAUSE_SERVICE
 import com.calories.running.track.caloriecrush.other.Constants.ACTION_START_OR_RESUME_SERVICE
+import com.calories.running.track.caloriecrush.other.Constants.MAP_ZOOM
+import com.calories.running.track.caloriecrush.services.Polyline
 import com.calories.running.track.caloriecrush.services.TrackingService
 import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.model.PolylineOptions
 
 
 class TrackingFragment : Fragment(R.layout.fragment_tracking) {
@@ -22,7 +28,9 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
     private lateinit var viewmodel: RunningViewmodel
 
-    private var map:GoogleMap?=null
+    private var map: GoogleMap? = null
+    private var isTracking = false
+    private var pathPoints = mutableListOf<Polyline>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,20 +39,89 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         binding.mapView.onCreate(savedInstanceState)
 
         binding.btnStart.setOnClickListener {
-            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+            toggleRun()
         }
 
         binding.mapView.getMapAsync {
-            map=it
+            map = it
+            addAllPolylines()
         }
 
+        subscribeToObserver()
         viewmodel = ViewModelProvider(this).get(RunningViewmodel::class.java)
 
     }
 
-    private fun sendCommandToService(action:String)=
-        Intent(requireContext(),TrackingService::class.java).also {
-            it.action=action
+    private fun subscribeToObserver() {
+        TrackingService.isTracking.observe(viewLifecycleOwner, Observer {
+            updateTracking(it)
+        })
+        TrackingService.pathPoints.observe(viewLifecycleOwner, Observer {
+            pathPoints = it
+            addLatestPolyline()
+            moveCameraToUser()
+        })
+    }
+
+    private fun toggleRun() {
+        if (isTracking) {
+            sendCommandToService(ACTION_PAUSE_SERVICE)
+        } else {
+            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+        }
+    }
+
+    private fun updateTracking(isTracking: Boolean) {
+        this.isTracking = isTracking
+        if (!isTracking) {
+            binding.btnStart.visibility = View.GONE
+            binding.btnResume.visibility = View.VISIBLE
+            binding.btnFinish.visibility = View.VISIBLE
+
+        } else {
+            binding.btnStart.visibility = View.VISIBLE
+            binding.btnResume.visibility = View.GONE
+            binding.btnFinish.visibility = View.GONE
+        }
+    }
+
+    private fun moveCameraToUser() {
+        if (pathPoints.isNotEmpty() && pathPoints.last().isNotEmpty()) {
+            map?.animateCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    pathPoints.last().last(),
+                    MAP_ZOOM
+                )
+            )
+        }
+    }
+
+    private fun addAllPolylines() {
+        for (polyline in pathPoints) {
+            val polylineOptions = PolylineOptions()
+                .color(resources.getColor(R.color.mainLightPurple))
+                .width(8f)
+                .addAll(polyline)
+            map?.addPolyline(polylineOptions)
+        }
+    }
+
+    private fun addLatestPolyline() {
+        if (pathPoints.isNotEmpty() && pathPoints.last().size > 1) {
+            var preLastLatLng = pathPoints.last()[pathPoints.last().size - 2]
+            val lasLatLng = pathPoints.last().last()
+            val polylineOptions = PolylineOptions()
+                .color(resources.getColor(R.color.mainLightPurple))
+                .width(8f)
+                .add(preLastLatLng)
+                .add(lasLatLng)
+            map?.addPolyline(polylineOptions)
+        }
+    }
+
+    private fun sendCommandToService(action: String) =
+        Intent(requireContext(), TrackingService::class.java).also {
+            it.action = action
             requireContext().startService(it)
         }
 
