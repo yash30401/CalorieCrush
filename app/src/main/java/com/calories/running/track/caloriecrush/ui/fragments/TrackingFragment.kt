@@ -19,6 +19,7 @@ import com.calories.running.track.caloriecrush.databinding.FragmentTrackingBindi
 import com.calories.running.track.caloriecrush.other.Constants.ACTION_PAUSE_SERVICE
 import com.calories.running.track.caloriecrush.other.Constants.ACTION_START_OR_RESUME_SERVICE
 import com.calories.running.track.caloriecrush.other.Constants.MAP_ZOOM
+import com.calories.running.track.caloriecrush.other.TrackingUtility
 import com.calories.running.track.caloriecrush.services.Polyline
 import com.calories.running.track.caloriecrush.services.TrackingService
 import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
@@ -42,6 +43,9 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
     private var map: GoogleMap? = null
     private var isTracking = false
     private var pathPoints = mutableListOf<Polyline>()
+
+    private var currTimeMillis = 0L
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -116,6 +120,12 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             pathPoints = it
             addLatestPolyline()
             moveCameraToUser()
+        })
+
+        TrackingService.timeRunInMillis.observe(viewLifecycleOwner, Observer {
+            currTimeMillis = it
+            val formattedTime = TrackingUtility.getFormattedStopwatchTime(currTimeMillis,true)
+            binding.timeTextView.text=formattedTime
         })
     }
 
