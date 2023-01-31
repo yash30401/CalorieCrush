@@ -15,8 +15,8 @@ import androidx.fragment.app.FragmentManager
 import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.databinding.FragmentRunBinding
 import com.calories.running.track.caloriecrush.other.Constants.REQUEST_CODE_LOCATION_PERMISSION
-import pub.devrel.easypermissions.AppSettingsDialog
-import pub.devrel.easypermissions.EasyPermissions
+import com.permissionx.guolindev.PermissionX
+
 
 class RunFragment : Fragment(R.layout.fragment_run) {
 
@@ -26,7 +26,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRunBinding.bind(view)
 
-        requestFineLocationPermissions()
+        requestLocationPermissions()
 
         fragment = requireActivity().supportFragmentManager
 
@@ -37,36 +37,22 @@ class RunFragment : Fragment(R.layout.fragment_run) {
     }
 
 
-    private fun requestFineLocationPermissions() {
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PERMISSION_GRANTED
-        ) {
-
-            //When permission is not granted by user, show them message why this permission is needed.
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Toast.makeText(
-                    context,
-                    "Please grant permissions to record audio",
-                    Toast.LENGTH_LONG
-                )
-                    .show()
-
-                //Give user option to still opt-in the permissions
-                ActivityCompat.requestPermissions(
-                    requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    101
-                )
+    private fun requestLocationPermissions() {
+        PermissionX.init(this)
+            .permissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+            .onExplainRequestReason { scope, deniedList ->
+                scope.showRequestReasonDialog(deniedList, "Core fundamental are based on these permissions", "OK", "Cancel")
             }
-        } else if (ContextCompat.checkSelfPermission(
-                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PERMISSION_GRANTED
-        ) {
-
-            //IF PERMISSION GRANTED
-        }
+            .onForwardToSettings { scope, deniedList ->
+                scope.showForwardToSettingsDialog(deniedList, "You need to allow necessary permissions in Settings manually", "OK", "Cancel")
+            }
+            .request { allGranted, grantedList, deniedList ->
+                if (allGranted) {
+                    Toast.makeText(context, "All permissions are granted", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(context, "These permissions are denied: $deniedList", Toast.LENGTH_LONG).show()
+                }
+            }
     }
 
     //Handling Permission callback

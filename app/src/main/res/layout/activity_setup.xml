@@ -98,10 +98,10 @@
         app:np_max="700"
         app:np_min="20"
         app:np_orientation="horizontal"
-        app:np_selectedTextColor="@color/colorPrimary"
+
 
         app:np_selectedTextSize="50sp"
-        app:np_textColor="@color/colorPrimary"
+
         app:np_textSize="30sp"
         app:np_value="3"
         app:np_width="200dp" />
