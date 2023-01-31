@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 
 import android.view.View
@@ -48,7 +49,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
             }
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
-                    Toast.makeText(context, "All permissions are granted", Toast.LENGTH_LONG).show()
+                    Log.d("Granted","All permissions are granted")
                 } else {
                     Toast.makeText(context, "These permissions are denied: $deniedList", Toast.LENGTH_LONG).show()
                 }

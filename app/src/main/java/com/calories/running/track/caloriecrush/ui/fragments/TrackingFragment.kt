@@ -1,11 +1,17 @@
 package com.calories.running.track.caloriecrush.ui.fragments
 
+import android.Manifest
 import android.content.Intent
+import android.content.IntentSender
+import android.content.pm.PackageManager
+import android.location.LocationRequest
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.calories.running.track.caloriecrush.R
@@ -16,6 +22,11 @@ import com.calories.running.track.caloriecrush.other.Constants.MAP_ZOOM
 import com.calories.running.track.caloriecrush.services.Polyline
 import com.calories.running.track.caloriecrush.services.TrackingService
 import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.LocationSettingsStatusCodes
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -39,6 +50,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         binding.mapView.onCreate(savedInstanceState)
 
         binding.btnStart.setOnClickListener {
+            checkPermissionGranted()
             toggleRun()
         }
 
@@ -51,6 +63,50 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         viewmodel = ViewModelProvider(this).get(RunningViewmodel::class.java)
 
     }
+
+    private fun checkPermissionGranted() {
+        if(ActivityCompat.checkSelfPermission(requireContext(),Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+            enableLocation()
+        }else{
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),111)
+        }
+    }
+
+    private fun enableLocation() {
+        val request = com.google.android.gms.location.LocationRequest.create()
+        request.priority= com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
+        request.setInterval(5000)
+        request.setFastestInterval(2000)
+
+        val builder= LocationSettingsRequest.Builder()
+            .addLocationRequest(request)
+        builder.setAlwaysShow(true)
+
+        val result= LocationServices.getSettingsClient(requireContext())
+            .checkLocationSettings(builder.build())
+        result.addOnCompleteListener {task->
+            try{
+                val response = task.getResult(ApiException::class.java)
+            }catch (e:ApiException){
+                when(e.statusCode){
+                    LocationSettingsStatusCodes.RESOLUTION_REQUIRED->{
+                        try{
+                            val resolvableApiException= ResolvableApiException(e.status)
+                            resolvableApiException.startResolutionForResult(requireActivity(),88)
+                        }catch (e:IntentSender.SendIntentException){
+
+                        }
+
+                    }
+                    LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE->{
+
+                    }
+                }
+               e.printStackTrace()
+            }
+        }
+    }
+
 
     private fun subscribeToObserver() {
         TrackingService.isTracking.observe(viewLifecycleOwner, Observer {
@@ -74,13 +130,11 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
     private fun updateTracking(isTracking: Boolean) {
         this.isTracking = isTracking
         if (!isTracking) {
-            binding.btnStart.visibility = View.GONE
-            binding.btnResume.visibility = View.VISIBLE
+            binding.btnStart.text = "Start"
             binding.btnFinish.visibility = View.VISIBLE
 
         } else {
-            binding.btnStart.visibility = View.VISIBLE
-            binding.btnResume.visibility = View.GONE
+            binding.btnStart.text = "Stop"
             binding.btnFinish.visibility = View.GONE
         }
     }
