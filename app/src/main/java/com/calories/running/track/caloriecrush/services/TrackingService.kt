@@ -9,9 +9,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.location.Location
+import android.location.LocationManager
 import android.location.LocationRequest
 import android.os.Build
 import android.os.Looper
+import android.provider.Settings
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
@@ -31,6 +33,7 @@ import com.calories.running.track.caloriecrush.other.Constants.NOTIFICATION_CHAN
 import com.calories.running.track.caloriecrush.other.Constants.NOTIFICATION_CHANNEL_NAME
 import com.calories.running.track.caloriecrush.other.Constants.NOTIFICATION_ID
 import com.calories.running.track.caloriecrush.other.Constants.TIMER_UPDATE_INTERVAL
+import com.calories.running.track.caloriecrush.other.TrackingUtility
 import com.calories.running.track.caloriecrush.ui.MainActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -55,6 +58,10 @@ class TrackingService : LifecycleService() {
 
     private val timeRunInSeconds = MutableLiveData<Long>()
 
+
+
+    lateinit var curNotificationBuilder: NotificationCompat.Builder
+
     companion object {
         val timeRunInMillis = MutableLiveData<Long>()
         val isTracking = MutableLiveData<Boolean>()
@@ -71,11 +78,20 @@ class TrackingService : LifecycleService() {
 
     override fun onCreate() {
         super.onCreate()
+
+        curNotificationBuilder =NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID).setAutoCancel(false)
+            .setOngoing(true)
+            .setSmallIcon(com.calories.running.track.caloriecrush.R.drawable.baseline_directions_run_24)
+            .setContentTitle("Calorie Crush")
+            .setContentText("00:00:00")
+            .setContentIntent(getMainAcitivtyPendingIntent())
+
         postInitialValues()
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         isTracking.observe(this, Observer {
             updateLocationTracking(it)
+            updateNotificationTrackingState(it)
         })
     }
 
@@ -141,7 +157,31 @@ class TrackingService : LifecycleService() {
 
     private fun pauseService() {
         isTracking.postValue(false)
-        isTimerEnabled=false
+        isTimerEnabled = false
+    }
+
+    private fun updateNotificationTrackingState(isTracking:Boolean){
+        val notificationActionText= if(isTracking) "Pause" else "Resume"
+        val pendingIntent = if(isTracking){
+            val pauseIntent = Intent(this,TrackingService::class.java).apply {
+                action= ACTION_PAUSE_SERVICE
+            }
+            PendingIntent.getService(this,1,pauseIntent, FLAG_UPDATE_CURRENT or FLAG_MUTABLE)
+        }else{
+            val resumeIntent = Intent(this,TrackingService::class.java).apply {
+                action= ACTION_START_OR_RESUME_SERVICE
+            }
+            PendingIntent.getService(this,2,resumeIntent, FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE)
+        }
+
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        curNotificationBuilder.javaClass.getDeclaredField("mPeople").apply {
+            isAccessible = false
+            set(curNotificationBuilder,ArrayList<NotificationCompat.Action>())
+        }
+        curNotificationBuilder.addAction(R.drawable.baseline_pause_24,notificationActionText,pendingIntent)
+        notificationManager.notify(NOTIFICATION_ID,curNotificationBuilder.build())
     }
 
     private fun updateLocationTracking(istracking: Boolean) {
@@ -213,15 +253,14 @@ class TrackingService : LifecycleService() {
             createNotificationChannel(notificationManager)
         }
 
-        val notificationBuilder = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-            .setAutoCancel(false)
-            .setOngoing(true)
-            .setSmallIcon(R.drawable.baseline_directions_run_24)
-            .setContentTitle("Calorie Crush")
-            .setContentText("00:00:00")
-            .setContentIntent(getMainAcitivtyPendingIntent())
 
-        startForeground(NOTIFICATION_ID, notificationBuilder.build())
+        startForeground(NOTIFICATION_ID, curNotificationBuilder.build())
+
+        timeRunInSeconds.observe(this, Observer {
+            val notification = curNotificationBuilder
+                .setContentText(TrackingUtility.getFormattedStopwatchTime(it*1000))
+            notificationManager.notify(NOTIFICATION_ID,notification.build())
+        })
 
     }
 

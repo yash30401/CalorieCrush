@@ -1,17 +1,17 @@
 package com.calories.running.track.caloriecrush.ui.fragments
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
-import android.location.LocationRequest
+import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.provider.Settings
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.calories.running.track.caloriecrush.R
@@ -30,7 +30,6 @@ import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsStatusCodes
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.PolylineOptions
 
 
@@ -55,7 +54,9 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
         binding.btnStart.setOnClickListener {
             checkPermissionGranted()
-            toggleRun()
+            if(TrackingUtility.isLocationEnabled(requireContext())==true) {
+                toggleRun()
+            }
         }
 
         binding.mapView.getMapAsync {
@@ -110,6 +111,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             }
         }
     }
+
 
 
     private fun subscribeToObserver() {
