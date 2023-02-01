@@ -31,6 +31,7 @@ import com.google.android.gms.location.LocationSettingsStatusCodes
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class TrackingFragment : Fragment(R.layout.fragment_tracking) {
@@ -69,8 +70,28 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         viewmodel = ViewModelProvider(this).get(RunningViewmodel::class.java)
 
 
+        binding.cancelRun.setOnClickListener {
+            showCancelRunDialog()
+        }
 
 
+
+    }
+
+    private fun showCancelRunDialog(){
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setMessage("Do you want to Cancel The Run?")
+            .setNegativeButton("Cancel"){dialog,which->
+                dialog.dismiss()
+            }
+            .setPositiveButton("Discard"){dialog,which->
+
+                cancelRun()
+
+            }.show()
+    }
+
+    private fun cancelRun() {
 
     }
 
