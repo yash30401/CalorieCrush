@@ -18,6 +18,7 @@ import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.databinding.FragmentTrackingBinding
 import com.calories.running.track.caloriecrush.other.Constants.ACTION_PAUSE_SERVICE
 import com.calories.running.track.caloriecrush.other.Constants.ACTION_START_OR_RESUME_SERVICE
+import com.calories.running.track.caloriecrush.other.Constants.ACTION_STOP_SERVICE
 import com.calories.running.track.caloriecrush.other.Constants.MAP_ZOOM
 import com.calories.running.track.caloriecrush.other.TrackingUtility
 import com.calories.running.track.caloriecrush.services.Polyline
@@ -85,14 +86,14 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
                 dialog.dismiss()
             }
             .setPositiveButton("Discard"){dialog,which->
-
                 cancelRun()
-
+                binding.cancelRun.visibility=View.GONE
+                binding.btnFinish.visibility=View.GONE
             }.show()
     }
 
     private fun cancelRun() {
-
+        sendCommandToService(ACTION_STOP_SERVICE)
     }
 
     private fun checkPermissionGranted() {
@@ -160,6 +161,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
     private fun toggleRun() {
         if (isTracking) {
             sendCommandToService(ACTION_PAUSE_SERVICE)
+            binding.btnFinish.visibility=View.VISIBLE
         } else {
             sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
         }
@@ -169,7 +171,6 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         this.isTracking = isTracking
         if (!isTracking) {
             binding.btnStart.text = "Start"
-            binding.btnFinish.visibility = View.VISIBLE
 
         } else {
             binding.btnStart.text = "Stop"
