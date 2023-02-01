@@ -82,10 +82,12 @@
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/cancelRun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:tooltipText="Cancel Run"
         android:layout_marginEnd="25dp"
         android:background="@android:color/transparent"
         android:foreground="?attr/selectableItemBackground"
