@@ -52,10 +52,11 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
         binding.mapView.onCreate(savedInstanceState)
 
+        checkPermissionGranted()
         binding.btnStart.setOnClickListener {
-            checkPermissionGranted()
             if(TrackingUtility.isLocationEnabled(requireContext())==true) {
                 toggleRun()
+                binding.cancelRun.visibility=View.VISIBLE
             }
         }
 
@@ -66,6 +67,10 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
         subscribeToObserver()
         viewmodel = ViewModelProvider(this).get(RunningViewmodel::class.java)
+
+
+
+
 
     }
 
