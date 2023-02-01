@@ -118,6 +118,7 @@ class TrackingService : LifecycleService() {
                         Log.d("Resuming Service...", "Resume Service..")
                         startTimer()
                     }
+
                 }
                 ACTION_PAUSE_SERVICE -> {
                     Log.d("Paused Service", "Paused Service")
