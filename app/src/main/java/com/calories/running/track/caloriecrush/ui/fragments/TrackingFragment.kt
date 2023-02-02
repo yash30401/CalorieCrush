@@ -93,8 +93,6 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             }else{
                 Toast.makeText(context, "You Didn't Run A Bit", Toast.LENGTH_SHORT).show()
                 stopRun()
-                binding.btnFinish.visibility=View.GONE
-                binding.cancelRun.visibility=View.GONE
             }
         }
 
@@ -108,13 +106,13 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             }
             .setPositiveButton("Discard") { dialog, which ->
                 stopRun()
-                binding.cancelRun.visibility = View.GONE
-                binding.btnFinish.visibility = View.GONE
             }.show()
     }
 
     private fun stopRun() {
         sendCommandToService(ACTION_STOP_SERVICE)
+        binding.btnFinish.visibility=View.GONE
+        binding.cancelRun.visibility=View.GONE
     }
 
     private fun checkPermissionGranted() {
@@ -249,7 +247,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             val caloriesBurned = ((distanceInMeters/1000f)* weight?.toFloat()!!).toInt()
             val run = Run(bmp,dateTimeStamp,avgSpeed,distanceInMeters,currTimeMillis,caloriesBurned)
             viewmodel.insertRun(run)
-            Snackbar.make(requireActivity().findViewById(R.id.mainactivity),"Run Saved Successfully",Snackbar.LENGTH_LONG).show()
+            Toast.makeText(context, "Run Saved", Toast.LENGTH_SHORT).show()
             Log.d("SAVED","SAVED")
             stopRun()
         }
