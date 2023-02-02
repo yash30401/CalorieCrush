@@ -12,4 +12,10 @@
     <string name="start">Start</string>
     <string name="resume">Resume</string>
     <string name="finish">Finish</string>
+
+    <string name="date">Date</string>
+    <string name="DurationOfRun">Duration</string>
+    <string name="KMRan">KM Ran</string>
+    <string name="AVGSpeed">AVG Speed</string>
+    <string name="CalBurned">Calories Burned</string>
 </resources>

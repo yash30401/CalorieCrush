@@ -16,4 +16,6 @@
     <color name="hintColor">#414141</color>
     <color name="baseline_grey">#E9E9E9</color>
     <color name="rippleColorBottomBar">#8ADBD8EC</color>
+    <color name="runHeadingColors">#707070</color>
+    <color name="runValueColors">#272727</color>
 </resources>

@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.calories.running.track.caloriecrush.DB.Run
 import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.databinding.RunLayoutBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
@@ -46,5 +49,16 @@ class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
     override fun onBindViewHolder(holder: RunViewHolder, position: Int) {
         val run=differ.currentList[position]
+
+        Glide.with(holder.itemView).load(run.img).into(holder.binding.imageView)
+
+        val calendar =Calendar.getInstance().apply {
+            timeInMillis = run.timestamp
+        }
+
+        val dateFormat = SimpleDateFormat("dd.MM.yy", Locale.getDefault())
+
+
+
     }
 }
