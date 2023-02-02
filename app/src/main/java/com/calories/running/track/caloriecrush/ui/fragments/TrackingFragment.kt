@@ -98,6 +98,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
     }
 
+    //Showing dialog on canceling a run
     private fun showCancelRunDialog() {
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setMessage("Do you want to Cancel The Run?")
@@ -105,16 +106,19 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
                 dialog.dismiss()
             }
             .setPositiveButton("Discard") { dialog, which ->
-                stopRun()
+                stopRun() // Stopping Run on Discard Button Click
             }.show()
     }
 
+    // Sending Command to Stop a run
     private fun stopRun() {
         sendCommandToService(ACTION_STOP_SERVICE)
         binding.btnFinish.visibility=View.GONE
         binding.cancelRun.visibility=View.GONE
     }
 
+
+    //Checking If the fine location permission is granted or not if granted then enabling location else ask for fine Location permission
     private fun checkPermissionGranted() {
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
