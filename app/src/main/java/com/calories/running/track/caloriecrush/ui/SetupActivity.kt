@@ -30,7 +30,7 @@ class SetupActivity : AppCompatActivity() {
         binding= ActivitySetupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        preferences = getPreferences(Context.MODE_PRIVATE)
+        preferences = getSharedPreferences("PREF",Context.MODE_PRIVATE)
         isFirstLaunch=preferences.getBoolean("first_launch",true)
 
         if(isFirstLaunch==false){

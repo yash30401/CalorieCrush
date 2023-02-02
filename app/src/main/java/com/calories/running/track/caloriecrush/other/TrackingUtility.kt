@@ -41,7 +41,7 @@ object TrackingUtility {
             )
             distance+=result[0]
         }
-        return DecimalFormat("#.##").format(distance).toFloat()
+        return distance
     }
 
     fun getFormattedStopwatchTime(ms: Long, includeMillis: Boolean = false): String {

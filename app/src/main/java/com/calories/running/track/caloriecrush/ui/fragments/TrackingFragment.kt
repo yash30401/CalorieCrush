@@ -54,7 +54,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
     private var pathPoints = mutableListOf<Polyline>()
 
     private var currTimeMillis = 0L
-    private  var weight:String?=null
+    private  var weight:Float?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -83,8 +83,8 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             showCancelRunDialog()
         }
 
-        val preferences =   activity?.getPreferences(Context.MODE_PRIVATE)
-        weight = preferences?.getString("weight","70")
+        val preferences = context?.getSharedPreferences("PREF",Context.MODE_PRIVATE)
+        weight = preferences?.getFloat("weight",70f)
 
         binding.btnFinish.setOnClickListener {
             if(pathPoints.isNotEmpty()) {
@@ -248,7 +248,8 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             val avgSpeed =
                 round((distanceInMeters / 1000f) / (currTimeMillis / 1000f / 60 / 60) * 10) / 10f
             val dateTimeStamp = Calendar.getInstance().timeInMillis
-            val caloriesBurned = ((distanceInMeters/1000f)* weight?.toFloat()!!).toInt()
+
+            val caloriesBurned = ((distanceInMeters/1000f)* weight!!).toInt()
             val run = Run(bmp,dateTimeStamp,avgSpeed,distanceInMeters,currTimeMillis,caloriesBurned)
             viewmodel.insertRun(run)
             Toast.makeText(context, "Run Saved", Toast.LENGTH_SHORT).show()
