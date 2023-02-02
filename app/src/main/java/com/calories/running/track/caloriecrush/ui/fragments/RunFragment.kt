@@ -9,13 +9,19 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 
 import android.view.View
+import android.widget.Adapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.calories.running.track.caloriecrush.R
+import com.calories.running.track.caloriecrush.adapters.RunAdapter
 import com.calories.running.track.caloriecrush.databinding.FragmentRunBinding
 import com.calories.running.track.caloriecrush.other.Constants.REQUEST_CODE_LOCATION_PERMISSION
+import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
 import com.permissionx.guolindev.PermissionX
 
 
@@ -23,35 +29,68 @@ class RunFragment : Fragment(R.layout.fragment_run) {
 
     private lateinit var binding: FragmentRunBinding
     private lateinit var fragment: FragmentManager
+    private lateinit var runAdapter: RunAdapter
+    private lateinit var viewModel:RunningViewmodel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRunBinding.bind(view)
 
         requestLocationPermissions()
+        viewModel=ViewModelProvider(this).get(RunningViewmodel::class.java)
+        setupRecyclerView()
+
+        viewModel.allRunsSortedByDate.observe(viewLifecycleOwner, Observer {
+            runAdapter.submitList(it)
+        })
 
         fragment = requireActivity().supportFragmentManager
-
         binding.addRunBtnFloating.setOnClickListener {
-            fragment.beginTransaction().add(R.id.mainactivity,TrackingFragment()).addToBackStack("run").commit()
+            fragment.beginTransaction().add(R.id.mainactivity, TrackingFragment())
+                .addToBackStack("run").commit()
         }
+
+    }
+
+    private fun setupRecyclerView() = binding.rvRuns.apply {
+        runAdapter = RunAdapter()
+        adapter = runAdapter
+        layoutManager = LinearLayoutManager(requireContext())
 
     }
 
 
     private fun requestLocationPermissions() {
         PermissionX.init(this)
-            .permissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+            .permissions(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+            )
             .onExplainRequestReason { scope, deniedList ->
-                scope.showRequestReasonDialog(deniedList, "Core fundamental are based on these permissions", "OK", "Cancel")
+                scope.showRequestReasonDialog(
+                    deniedList,
+                    "Core fundamental are based on these permissions",
+                    "OK",
+                    "Cancel"
+                )
             }
             .onForwardToSettings { scope, deniedList ->
-                scope.showForwardToSettingsDialog(deniedList, "You need to allow necessary permissions in Settings manually", "OK", "Cancel")
+                scope.showForwardToSettingsDialog(
+                    deniedList,
+                    "You need to allow necessary permissions in Settings manually",
+                    "OK",
+                    "Cancel"
+                )
             }
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
-                    Log.d("Granted","All permissions are granted")
+                    Log.d("Granted", "All permissions are granted")
                 } else {
-                    Toast.makeText(context, "These permissions are denied: $deniedList", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        "These permissions are denied: $deniedList",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
     }

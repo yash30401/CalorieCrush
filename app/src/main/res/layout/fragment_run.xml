@@ -20,6 +20,7 @@
         app:tint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRuns"
         android:layout_width="match_parent"
         tools:listitem="@layout/run_layout"
         android:layout_gravity="center_horizontal"

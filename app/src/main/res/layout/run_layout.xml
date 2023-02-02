@@ -129,7 +129,7 @@
                         android:id="@+id/runAvgSpeed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="29.5 km/h"
+                        android:text="29.5km/h"
                         android:textColor="@color/runValueColors"
                         android:textSize="20sp" />
 

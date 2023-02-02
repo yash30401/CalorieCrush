@@ -14,12 +14,13 @@ class RunningViewmodel(application: Application):AndroidViewModel(application) {
 
     private val repository:RunningRepository
     val allRuns:LiveData<List<Run>>
+    val allRunsSortedByDate:LiveData<List<Run>>
 
     init {
         val dao=RunningDatabase.getDatabse(application).getRunDao()
         repository= RunningRepository(dao)
         allRuns=repository.allRuns
-
+        allRunsSortedByDate=repository.allRunsSortedByDate
     }
 
     fun insertRun(run: Run)=viewModelScope.launch(Dispatchers.IO) {

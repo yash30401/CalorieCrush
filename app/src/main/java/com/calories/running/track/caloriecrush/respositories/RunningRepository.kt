@@ -7,7 +7,7 @@ import com.calories.running.track.caloriecrush.DB.RunDao
 class RunningRepository(private val runDao: RunDao) {
 
     val allRuns:LiveData<List<Run>> = runDao.getAllRunsSortedByDistance()
-
+    val allRunsSortedByDate:LiveData<List<Run>> = runDao.getAllRunsSortedByDate()
     suspend fun insertRun(run:Run){
         runDao.insertRun(run)
     }
