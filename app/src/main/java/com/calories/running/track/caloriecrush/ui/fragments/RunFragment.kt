@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Adapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -35,6 +36,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRunBinding.bind(view)
 
+        binding.addRunBtnFloating.animation=AnimationUtils.loadAnimation(context,R.anim.slide_up)
         requestLocationPermissions()
         viewModel=ViewModelProvider(this).get(RunningViewmodel::class.java)
         setupRecyclerView()

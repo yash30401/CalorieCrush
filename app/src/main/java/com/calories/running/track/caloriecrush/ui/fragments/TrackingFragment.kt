@@ -39,6 +39,9 @@ import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.Calendar
 import kotlin.math.round
 
@@ -61,6 +64,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         binding = FragmentTrackingBinding.bind(view)
 
         binding.mapView.onCreate(savedInstanceState)
+
 
         checkPermissionGranted()
         binding.btnStart.setOnClickListener {
@@ -252,6 +256,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             val caloriesBurned = ((distanceInMeters/1000f)* weight!!).toInt()
             val run = Run(bmp,dateTimeStamp,avgSpeed,distanceInMeters,currTimeMillis,caloriesBurned)
             viewmodel.insertRun(run)
+            fragmentManager?.popBackStack()
             Toast.makeText(context, "Run Saved", Toast.LENGTH_SHORT).show()
             Log.d("SAVED","SAVED")
             stopRun()
