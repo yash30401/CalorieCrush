@@ -18,4 +18,5 @@
     <string name="KMRan">KM Ran</string>
     <string name="AVGSpeed">AVG Speed</string>
     <string name="CalBurned">Calories Burned</string>
+    <string name="maprunview">MAPRUNVIEW</string>
 </resources>

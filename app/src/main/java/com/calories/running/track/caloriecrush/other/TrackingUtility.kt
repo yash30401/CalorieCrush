@@ -36,7 +36,7 @@ object TrackingUtility {
                 pos1.latitude,
                 pos1.longitude,
                 pos2.latitude,
-                pos2.latitude,
+                pos2.longitude,
                 result
             )
             distance+=result[0]
