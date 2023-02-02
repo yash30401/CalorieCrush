@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginRight="10dp"
         app:cardCornerRadius="20dp">
 
@@ -25,9 +26,9 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="240dp"
+                    android:layout_width="230dp"
                     android:layout_height="260dp"
-
+                    android:scaleType="fitXY"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -36,13 +37,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginTop="6dp"
                     android:paddingTop="3dp"
                     android:paddingLeft="7dp">
 
@@ -50,14 +53,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/date"
+                        android:includeFontPadding="false"
                         android:textColor="@color/runHeadingColors"
-                        android:textSize="16sp" />
+                        android:textSize="13sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/runDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="29:05:23"
+                        android:includeFontPadding="false"
                         android:textColor="@color/runValueColors"
                         android:textSize="20sp" />
 
@@ -67,20 +72,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginTop="6dp"
                     android:paddingTop="3dp"
                     android:paddingLeft="7dp">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
                         android:text="@string/DurationOfRun"
                         android:textColor="@color/runHeadingColors"
-                        android:textSize="16sp" />
+                        android:textSize="13sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/runDuration"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
                         android:text="00:00:07"
                         android:textColor="@color/runValueColors"
                         android:textSize="20sp" />
@@ -91,6 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginTop="6dp"
                     android:paddingTop="3dp"
                     android:paddingLeft="7dp">
 
@@ -99,13 +108,15 @@
                         android:layout_height="wrap_content"
                         android:text="@string/KMRan"
                         android:textColor="@color/runHeadingColors"
-                        android:textSize="16sp" />
+                        android:includeFontPadding="false"
+                        android:textSize="13sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/runKmRan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="29 KM"
+                        android:includeFontPadding="false"
                         android:textColor="@color/runValueColors"
                         android:textSize="20sp" />
 
@@ -116,20 +127,23 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingTop="3dp"
+                    android:layout_marginTop="6dp"
                     android:paddingLeft="7dp">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/AVGSpeed"
+                        android:includeFontPadding="false"
                         android:textColor="@color/runHeadingColors"
-                        android:textSize="16sp" />
+                        android:textSize="13sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/runAvgSpeed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="29.5km/h"
+                        android:includeFontPadding="false"
                         android:textColor="@color/runValueColors"
                         android:textSize="20sp" />
 
@@ -139,6 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginTop="6dp"
                     android:paddingTop="3dp"
                     android:paddingLeft="7dp">
 
@@ -147,13 +162,15 @@
                         android:layout_height="wrap_content"
                         android:text="@string/CalBurned"
                         android:textColor="@color/runHeadingColors"
-                        android:textSize="16sp" />
+                        android:includeFontPadding="false"
+                        android:textSize="13sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/runCalBurned"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="18 Cal"
+                        android:includeFontPadding="false"
                         android:textColor="@color/runValueColors"
                         android:textSize="20sp" />
 

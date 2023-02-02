@@ -6,6 +6,7 @@ import android.location.LocationManager
 import android.os.Build
 import android.provider.Settings
 import com.calories.running.track.caloriecrush.services.Polyline
+import java.text.DecimalFormat
 import java.util.concurrent.TimeUnit
 
 object TrackingUtility {
@@ -40,7 +41,7 @@ object TrackingUtility {
             )
             distance+=result[0]
         }
-        return distance
+        return DecimalFormat("#.##").format(distance).toFloat()
     }
 
     fun getFormattedStopwatchTime(ms: Long, includeMillis: Boolean = false): String {

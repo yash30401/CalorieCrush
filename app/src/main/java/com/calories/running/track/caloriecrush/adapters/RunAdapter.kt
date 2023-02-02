@@ -63,7 +63,7 @@ class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
         val avgSpeed = "${run.avgSpeedInKMH}km/h"
         holder.binding.runAvgSpeed.text = avgSpeed
 
-        val distanceInKm = "${run.distanceInMeters / 1000f} KM"
+        val distanceInKm = "${(run.distanceInMeters) / 1000f} KM"
         holder.binding.runKmRan.text = distanceInKm
 
         holder.binding.runDuration.text =

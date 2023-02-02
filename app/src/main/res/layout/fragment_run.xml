@@ -23,6 +23,7 @@
         android:id="@+id/rvRuns"
         android:layout_width="match_parent"
         tools:listitem="@layout/run_layout"
+        android:layout_marginBottom="80dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="match_parent"/>
 
