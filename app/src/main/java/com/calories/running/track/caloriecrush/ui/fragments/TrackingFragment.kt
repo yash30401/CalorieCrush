@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -71,6 +72,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             if (TrackingUtility.isLocationEnabled(requireContext()) == true) {
                 toggleRun()
                 binding.cancelRun.visibility = View.VISIBLE
+                binding.cancelRun.animation=AnimationUtils.loadAnimation(context,R.anim.slide_left)
             }
         }
 
