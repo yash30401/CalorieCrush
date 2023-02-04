@@ -42,6 +42,38 @@ class RunningViewmodel(application: Application):AndroidViewModel(application) {
                 }
             }
         }
+
+        runs.addSource(allRunsSortedByDistance){result->
+            if(sortType == SortType.DISTANCE){
+                result?.let {
+                    runs.value=it
+                }
+            }
+        }
+
+        runs.addSource(allRunsSortedByAvgSpeed){result->
+            if(sortType == SortType.AVG_SPEED){
+                result?.let {
+                    runs.value=it
+                }
+            }
+        }
+
+        runs.addSource(allRunsSortedByCalBurned){result->
+            if(sortType == SortType.CALORIES_BURNED){
+                result?.let {
+                    runs.value=it
+                }
+            }
+        }
+
+        runs.addSource(allRunsSortedByTimeInMillis){result->
+            if(sortType == SortType.RUNNING_TIME){
+                result?.let {
+                    runs.value=it
+                }
+            }
+        }
     }
 
     fun insertRun(run: Run)=viewModelScope.launch(Dispatchers.IO) {
