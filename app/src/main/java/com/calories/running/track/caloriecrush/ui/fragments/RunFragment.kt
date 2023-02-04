@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Adapter
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -42,9 +43,44 @@ class RunFragment : Fragment(R.layout.fragment_run) {
         viewModel=ViewModelProvider(this).get(RunningViewmodel::class.java)
         setupRecyclerView()
 
-//        when(viewModel.sortType){
-//            SortType.DATE->spF
-//        }
+        when(viewModel.sortType){
+            SortType.DATE->binding.spinFilter.setSelection(0)
+            SortType.DISTANCE->binding.spinFilter.setSelection(1)
+            SortType.RUNNING_TIME->binding.spinFilter.setSelection(2)
+            SortType.AVG_SPEED->binding.spinFilter.setSelection(3)
+            SortType.CALORIES_BURNED->binding.spinFilter.setSelection(4)
+        }
+
+        binding.spinFilter.onItemSelectedListener = object:AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                when(pos){
+                    0->{
+                        viewModel.sortRuns(SortType.DATE)
+                    }
+
+                    1->{
+                        viewModel.sortRuns(SortType.DISTANCE)
+                    }
+
+                    2->{
+                        viewModel.sortRuns(SortType.RUNNING_TIME)
+                    }
+
+                    3->{
+                        viewModel.sortRuns(SortType.AVG_SPEED)
+                    }
+
+                    4->{
+                        viewModel.sortRuns(SortType.CALORIES_BURNED)
+                    }
+                }
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
 
         viewModel.runs.observe(viewLifecycleOwner, Observer {
             runAdapter.submitList(it)

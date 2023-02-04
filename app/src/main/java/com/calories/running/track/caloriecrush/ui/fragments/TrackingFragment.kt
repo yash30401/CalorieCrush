@@ -269,7 +269,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         for (polyline in pathPoints) {
             val polylineOptions = PolylineOptions()
                 .color(resources.getColor(R.color.mainLightPurple))
-                .width(10f)
+                .width(20f)
                 .addAll(polyline)
             map?.addPolyline(polylineOptions)
         }
@@ -281,7 +281,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             val lasLatLng = pathPoints.last().last()
             val polylineOptions = PolylineOptions()
                 .color(resources.getColor(R.color.mainLightPurple))
-                .width(12f)
+                .width(20f)
                 .add(preLastLatLng)
                 .add(lasLatLng)
             map?.addPolyline(polylineOptions)
