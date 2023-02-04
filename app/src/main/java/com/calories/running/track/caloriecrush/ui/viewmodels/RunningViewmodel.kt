@@ -15,12 +15,12 @@ import kotlinx.coroutines.launch
 class RunningViewmodel(application: Application) : AndroidViewModel(application) {
 
     private val repository: RunningRepository
-    private val allRuns: LiveData<List<Run>>
-    private val allRunsSortedByDate: LiveData<List<Run>>
-    private val allRunsSortedByDistance: LiveData<List<Run>>
-    private val allRunsSortedByCalBurned: LiveData<List<Run>>
-    private val allRunsSortedByTimeInMillis: LiveData<List<Run>>
-    private val allRunsSortedByAvgSpeed: LiveData<List<Run>>
+     val allRuns: LiveData<List<Run>>
+     val allRunsSortedByDate: LiveData<List<Run>>
+     val allRunsSortedByDistance: LiveData<List<Run>>
+     val allRunsSortedByCalBurned: LiveData<List<Run>>
+     val allRunsSortedByTimeInMillis: LiveData<List<Run>>
+     val allRunsSortedByAvgSpeed: LiveData<List<Run>>
 
     val runs = MediatorLiveData<List<Run>>()
 

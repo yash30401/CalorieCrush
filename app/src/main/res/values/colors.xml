@@ -18,4 +18,13 @@
     <color name="rippleColorBottomBar">#8ADBD8EC</color>
     <color name="runHeadingColors">#707070</color>
     <color name="runValueColors">#272727</color>
+
+    <color name="chartcolorTotalDistanceLine">#870000</color>
+    <color name="chartcolorTotalDistanceFill">#B64343</color>
+
+    <color name="chartcolorcaloriesBurnedline">#005191</color>
+    <color name="chartcolorcaloriesBurnedfill">#63C0EA</color>
+
+    <color name="chartcolortimeRanline">#FF3D00</color>
+    <color name="chartcolortimeRanfill">#ED9616</color>
 </resources>
