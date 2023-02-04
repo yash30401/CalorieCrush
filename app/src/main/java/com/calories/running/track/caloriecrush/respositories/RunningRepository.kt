@@ -12,6 +12,11 @@ class RunningRepository(private val runDao: RunDao) {
     val allRunsSortedByCalBurned:LiveData<List<Run>> = runDao.getAllRunsSorteByCaloriesBurned()
     val allRunsSortedByTimeInMillis:LiveData<List<Run>> = runDao.getAllRunsSortedByTimeInMillis()
     val allRunsSortedByAvgSpeed:LiveData<List<Run>> = runDao.getAllRunsSortedByAverageSpeed()
+    val getTotalTimeInMillis:LiveData<Long> = runDao.getTotalTimeInMillis()
+    val getTotalCaloriesBurned:LiveData<Int> = runDao.getTotalCaloriesBurned()
+    val getTotalDistance:LiveData<Int> = runDao.getTotalDistance()
+    val getTotalAverageSpeed:LiveData<Float> = runDao.getTotalAverageSpeed()
+
 
     suspend fun insertRun(run:Run){
         runDao.insertRun(run)
