@@ -19,4 +19,14 @@
     <string name="AVGSpeed">AVG Speed</string>
     <string name="CalBurned">Calories Burned</string>
     <string name="maprunview">MAPRUNVIEW</string>
+
+    <string name="sortBy">Sort By:</string>
+
+    <string-array name="spinSortedValue">
+        <item>Date</item>
+        <item>Distance</item>
+        <item>Running Time</item>
+        <item>Average Speed</item>
+        <item>Calories Burned</item>
+    </string-array>
 </resources>

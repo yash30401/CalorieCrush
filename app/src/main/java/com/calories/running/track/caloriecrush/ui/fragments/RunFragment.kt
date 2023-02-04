@@ -22,6 +22,7 @@ import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.adapters.RunAdapter
 import com.calories.running.track.caloriecrush.databinding.FragmentRunBinding
 import com.calories.running.track.caloriecrush.other.Constants.REQUEST_CODE_LOCATION_PERMISSION
+import com.calories.running.track.caloriecrush.other.SortType
 import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
 import com.permissionx.guolindev.PermissionX
 
@@ -41,7 +42,11 @@ class RunFragment : Fragment(R.layout.fragment_run) {
         viewModel=ViewModelProvider(this).get(RunningViewmodel::class.java)
         setupRecyclerView()
 
-        viewModel.allRunsSortedByDate.observe(viewLifecycleOwner, Observer {
+//        when(viewModel.sortType){
+//            SortType.DATE->spF
+//        }
+
+        viewModel.runs.observe(viewLifecycleOwner, Observer {
             runAdapter.submitList(it)
         })
 

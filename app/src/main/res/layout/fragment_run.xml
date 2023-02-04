@@ -19,6 +19,37 @@
         app:srcCompat="@drawable/baseline_add_24"
         app:tint="@color/white" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:text="@string/sortBy"
+                android:textColor="@color/bottomBarDark"
+                android:includeFontPadding="false"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins"
+                android:layout_height="wrap_content"/>
+
+            <Spinner
+                android:id="@+id/spinFilter"
+                android:layout_width="100dp"
+
+                android:entries="@array/spinSortedValue"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRuns"
         android:layout_width="match_parent"
@@ -27,7 +58,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="match_parent"/>
 
-
+    </LinearLayout>
 
 
 
