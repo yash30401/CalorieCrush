@@ -13,6 +13,7 @@ import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.databinding.FragmentStatsBinding
 import com.calories.running.track.caloriecrush.other.TrackingUtility
 import com.calories.running.track.caloriecrush.ui.viewmodels.StatsViewModel
+import kotlin.math.round
 
 
 class StatsFragment : Fragment(R.layout.fragment_stats) {
@@ -24,7 +25,7 @@ class StatsFragment : Fragment(R.layout.fragment_stats) {
         binding= FragmentStatsBinding.bind(view)
 
         viewModel=ViewModelProvider(this).get(StatsViewModel::class.java)
-
+        subscribeToObserver()
 
     }
 
@@ -32,7 +33,31 @@ class StatsFragment : Fragment(R.layout.fragment_stats) {
         viewModel.getTotalTimeInMillis.observe(viewLifecycleOwner, Observer {
             it?.let {
                 val totalTimeRun = TrackingUtility.getFormattedStopwatchTime(it)
+                    binding.tvTotalTime.text=totalTimeRun
+            }
+        })
 
+        viewModel.getTotalDistance.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                val km = it/1000f
+                val totalDistance= round(km*10f)/10f
+                val totalDistanceString = "${totalDistance}Km"
+                binding.tvTotalDistance.text=totalDistanceString
+            }
+        })
+
+        viewModel.getTotalAverageSpeed.observe(viewLifecycleOwner, Observer {
+            it?.let {
+               val avgSpeed = round(it*10f)/10f
+                val avergeSpeedString = "${avgSpeed}km/h"
+                binding.tvTotalAverageSpeed.text=avergeSpeedString
+            }
+        })
+
+        viewModel.getTotalCaloriesBurned.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                val totalCal = "${it}Kcal"
+                binding.tvTotalCalBurned.text=totalCal
             }
         })
     }
