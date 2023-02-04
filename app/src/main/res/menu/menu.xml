@@ -6,7 +6,7 @@
         android:enabled="true"
         android:icon="@drawable/baseline_directions_run_24"
         app:showAsAction="always"
-        android:title="Your Runs"/>
+        android:title="Activity Log"/>
 
     <item android:id="@+id/marketFragment"
         android:enabled="true"
