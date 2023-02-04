@@ -29,4 +29,10 @@
         <item>Average Speed</item>
         <item>Calories Burned</item>
     </string-array>
+
+    <string name="totalTime">Total Time</string>
+    <string name="total_distance">Total Distance</string>
+    <string name="totalCalBurned">Total Calories Burned</string>
+    <string name="avgSpeed">Average Speed</string>
+
 </resources>
