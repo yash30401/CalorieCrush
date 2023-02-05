@@ -157,6 +157,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@drawable/time_icon"
+
         app:layout_constraintEnd_toEndOf="@+id/tvTotalTime"
         app:layout_constraintStart_toStartOf="@+id/tvTotalTime"
         app:layout_constraintTop_toTopOf="parent" />
