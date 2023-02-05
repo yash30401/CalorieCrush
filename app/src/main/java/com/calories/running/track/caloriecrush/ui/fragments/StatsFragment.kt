@@ -3,6 +3,7 @@ package com.calories.running.track.caloriecrush.ui.fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.calories.running.track.caloriecrush.R
@@ -11,7 +12,6 @@ import com.calories.running.track.caloriecrush.other.TrackingUtility
 import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
 import com.calories.running.track.caloriecrush.ui.viewmodels.StatsViewModel
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import kotlin.math.round
@@ -28,6 +28,24 @@ class StatsFragment : Fragment(R.layout.fragment_stats) {
 
         viewModel=ViewModelProvider(this).get(StatsViewModel::class.java)
         runViewModel=ViewModelProvider(this).get(RunningViewmodel::class.java)
+
+        val animUtil = android.view.animation.AnimationUtils.loadAnimation(context,R.anim.slide_right_and_fade_in)
+        val animUtil2= AnimationUtils.loadAnimation(context,R.anim.slide_up_and_fadein)
+        binding.imageView2.animation=animUtil
+        binding.imageView3.animation=animUtil
+        binding.imageView4.animation=animUtil
+        binding.imageView5.animation=animUtil
+
+        binding.tvTotalTime.animation=animUtil2
+        binding.tvTotalDistance.animation=animUtil2
+        binding.tvTotalAverageSpeed.animation=animUtil2
+        binding.tvTotalCalBurned.animation=animUtil2
+
+        binding.textView5.animation=animUtil2
+        binding.textView6.animation=animUtil2
+        binding.textView7.animation=animUtil2
+        binding.textView8.animation=animUtil2
+
         subscribeToObserver()
         setupChart()
 
