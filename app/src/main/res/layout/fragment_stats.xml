@@ -32,58 +32,58 @@
         android:id="@+id/tvTotalTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="00:00:00"
-        android:includeFontPadding="false"
-        android:textSize="25sp"
+        android:layout_marginTop="1dp"
         android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
+        android:text="00:00:00"
         android:textColor="@color/black"
+        android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTotalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="1dp"
+        android:fontFamily="@font/poppins"
         android:includeFontPadding="false"
         android:text="0Km"
-        android:textSize="25sp"
-        android:fontFamily="@font/poppins"
         android:textColor="@color/black"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTotalCalBurned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="1dp"
+        android:fontFamily="@font/poppins"
         android:includeFontPadding="false"
         android:text="0Kcal"
-        android:fontFamily="@font/poppins"
         android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotalTime" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTotalAverageSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="0Km/h"
+        android:layout_marginTop="1dp"
         android:fontFamily="@font/poppins"
-        android:textColor="@color/black"
         android:includeFontPadding="false"
+        android:text="0Km/h"
+        android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotalDistance" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView5"
@@ -149,7 +149,48 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
-        app:layout_constraintGuide_percent="0.29" />
+        app:layout_constraintGuide_percent="0.37" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/time_icon"
+        app:layout_constraintEnd_toEndOf="@+id/tvTotalTime"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalTime"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/distance_icon"
+        app:layout_constraintEnd_toEndOf="@+id/tvTotalDistance"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalDistance"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/cal_icon"
+        app:layout_constraintEnd_toEndOf="@+id/tvTotalCalBurned"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalCalBurned"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/speed_icon"
+        app:layout_constraintEnd_toEndOf="@+id/tvTotalAverageSpeed"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalAverageSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
