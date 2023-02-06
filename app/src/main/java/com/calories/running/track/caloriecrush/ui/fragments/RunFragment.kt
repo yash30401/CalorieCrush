@@ -113,6 +113,7 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
             dialog.show()
         }
 
+
     }
 
     private fun setupRecyclerView() = binding.rvRuns.apply {
@@ -197,7 +198,6 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
             selectedItems.remove(run)
         } else {
             itemView.setBackgroundResource(R.color.selectedColor)
-
             selectedItems.add(run)
         }
 
@@ -230,6 +230,7 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
 
         }
     }
+
 
 
 }
