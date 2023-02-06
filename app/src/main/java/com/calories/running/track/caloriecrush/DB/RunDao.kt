@@ -12,7 +12,7 @@ interface RunDao {
      fun insertRun(run: Run)
 
     @Delete
-     fun deleteRun(run: Run)
+     fun deleteRun(run: List<Run>)
 
     @Query("SELECT * FROM running_table ORDER BY timestamp DESC")
     fun getAllRunsSortedByDate(): LiveData<List<Run>>

@@ -22,7 +22,7 @@ class RunningRepository(private val runDao: RunDao) {
         runDao.insertRun(run)
     }
 
-    suspend fun deleteRun(run: Run){
+    suspend fun deleteRun(run:List<Run>){
         runDao.deleteRun(run)
     }
 

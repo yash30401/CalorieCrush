@@ -115,7 +115,7 @@ class RunningViewmodel(application: Application) : AndroidViewModel(application)
         repository.insertRun(run)
     }
 
-    fun deleteRun(run: Run) = viewModelScope.launch(Dispatchers.IO) {
+    fun deleteRun(run: List<Run>) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteRun(run)
     }
 

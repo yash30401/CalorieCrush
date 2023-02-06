@@ -27,4 +27,6 @@
 
     <color name="chartcolortimeRanline">#FF3D00</color>
     <color name="chartcolortimeRanfill">#ED9616</color>
+
+    <color name="selectedColor">#859185CE</color>
 </resources>

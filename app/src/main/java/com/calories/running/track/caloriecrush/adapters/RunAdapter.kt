@@ -1,9 +1,11 @@
 package com.calories.running.track.caloriecrush.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.AdapterView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,12 +17,15 @@ import com.calories.running.track.caloriecrush.other.TrackingUtility
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
+class RunAdapter(val listner:onItemClick) : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
     var isSelected=false
+    var selectItems= arrayListOf<Run>()
 
     inner class RunViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding = RunLayoutBinding.bind(itemView)
+
+
     }
 
     //Checking if Two Lists differs or not
@@ -43,6 +48,68 @@ class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
         val viewHolder = RunViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.run_layout, parent, false)
         )
+
+        viewHolder.itemView.setOnLongClickListener(object:AdapterView.OnItemLongClickListener,
+            View.OnLongClickListener {
+
+            override fun onLongClick(p0: View?): Boolean {
+                isSelected=true
+                if(selectItems.contains(differ.currentList.get(viewHolder.adapterPosition))){
+                    viewHolder.itemView.setBackgroundColor(Color.TRANSPARENT)
+                    selectItems.remove(differ.currentList.get(viewHolder.adapterPosition))
+                }else{
+                    viewHolder.itemView.setBackgroundResource(R.color.selectedColor)
+
+                    selectItems.add(differ.currentList.get(viewHolder.adapterPosition))
+                }
+
+                if(selectItems.size==0){
+                    isSelected=false
+                }
+                return true
+            }
+
+            override fun onItemLongClick(
+                p0: AdapterView<*>?,
+                p1: View?,
+                p2: Int,
+                p3: Long
+            ): Boolean {
+               return true
+            }
+
+        })
+
+        viewHolder.itemView.setOnClickListener(object:AdapterView.OnItemClickListener,
+            View.OnClickListener {
+            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onClick(p0: View?) {
+                if(isSelected){
+                    if(selectItems.contains(differ.currentList.get(viewHolder.adapterPosition))){
+                        viewHolder.itemView.setBackgroundColor(Color.TRANSPARENT)
+                        selectItems.remove(differ.currentList.get(viewHolder.adapterPosition))
+                    }else{
+                        viewHolder.itemView.setBackgroundResource(R.color.selectedColor)
+
+                        selectItems.add(differ.currentList.get(viewHolder.adapterPosition))
+                    }
+
+                    if(selectItems.size==0){
+                        isSelected=false
+                    }
+                }else{
+
+                }
+            }
+
+        })
+
+
+
+
 
         return viewHolder
     }
@@ -77,4 +144,8 @@ class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
         holder.binding.runCardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,R.anim.recyclerview_anim))
     }
+}
+
+interface onItemClick{
+    fun onClick(run: Run)
 }

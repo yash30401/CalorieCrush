@@ -19,8 +19,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.calories.running.track.caloriecrush.DB.Run
 import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.adapters.RunAdapter
+import com.calories.running.track.caloriecrush.adapters.onItemClick
 import com.calories.running.track.caloriecrush.databinding.FragmentRunBinding
 import com.calories.running.track.caloriecrush.other.Constants.REQUEST_CODE_LOCATION_PERMISSION
 import com.calories.running.track.caloriecrush.other.SortType
@@ -28,7 +30,7 @@ import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
 import com.permissionx.guolindev.PermissionX
 
 
-class RunFragment : Fragment(R.layout.fragment_run) {
+class RunFragment : Fragment(R.layout.fragment_run),onItemClick {
 
     private lateinit var binding: FragmentRunBinding
     private lateinit var fragment: FragmentManager
@@ -95,7 +97,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
     }
 
     private fun setupRecyclerView() = binding.rvRuns.apply {
-        runAdapter = RunAdapter()
+        runAdapter = RunAdapter(this@RunFragment)
         adapter = runAdapter
         layoutManager = LinearLayoutManager(requireContext())
 
@@ -161,6 +163,10 @@ class RunFragment : Fragment(R.layout.fragment_run) {
                 return
             }
         }
+    }
+
+    override fun onClick(run: Run) {
+
     }
 
 
