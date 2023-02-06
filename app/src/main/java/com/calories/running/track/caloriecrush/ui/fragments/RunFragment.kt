@@ -1,6 +1,7 @@
 package com.calories.running.track.caloriecrush.ui.fragments
 
 import android.Manifest
+import android.content.DialogInterface
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Color
 import android.os.Bundle
@@ -23,6 +24,7 @@ import com.calories.running.track.caloriecrush.adapters.onLongClickInterface
 import com.calories.running.track.caloriecrush.databinding.FragmentRunBinding
 import com.calories.running.track.caloriecrush.other.SortType
 import com.calories.running.track.caloriecrush.ui.viewmodels.RunningViewmodel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.permissionx.guolindev.PermissionX
 
 
@@ -95,6 +97,20 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
         binding.addRunBtnFloating.setOnClickListener {
             fragment.beginTransaction().add(R.id.mainactivity, TrackingFragment())
                 .addToBackStack("run").commit()
+        }
+
+        binding.btnDelete.setOnClickListener {
+            val dialog = MaterialAlertDialogBuilder(requireContext())
+                .setMessage("Do you want to delete Run?")
+                .setNegativeButton("No",DialogInterface.OnClickListener { dialogInterface, i ->
+                    dialogInterface.dismiss()
+                })
+                .setPositiveButton("Yes",DialogInterface.OnClickListener { dialogInterface, i ->
+                    viewModel.deleteRun(selectedItems)
+                    binding.btnDelete.visibility=View.GONE
+                })
+
+            dialog.show()
         }
 
     }
@@ -174,6 +190,8 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
         itemView: View
     ) {
         isSelected = true
+        binding.btnDelete.visibility=View.VISIBLE
+        binding.btnDelete.animation=AnimationUtils.loadAnimation(context,R.anim.slide_left)
         if (selectedItems.contains(run)) {
             itemView.setBackgroundColor(Color.TRANSPARENT)
             selectedItems.remove(run)
@@ -185,7 +203,9 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
 
         if (selectedItems.size == 0) {
             isSelected = false
+            binding.btnDelete.visibility=View.GONE
         }
+
     }
 
     override fun onClick(
@@ -204,6 +224,7 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
 
             if (selectedItems.size == 0) {
                 isSelected = false
+                binding.btnDelete.visibility=View.GONE
             }
         } else {
 

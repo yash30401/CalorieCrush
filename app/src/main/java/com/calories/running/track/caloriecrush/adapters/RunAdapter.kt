@@ -54,63 +54,7 @@ class RunAdapter(val listner: onItemClick, val longClickListner: onLongClickInte
             )
             return@setOnLongClickListener true
         }
-//        viewHolder.itemView.setOnLongClickListener(object:AdapterView.OnItemLongClickListener,
-//            View.OnLongClickListener {
-//
-//            override fun onLongClick(p0: View?): Boolean {
-//                isSelected=true
-//                if(selectItems.contains(differ.currentList.get(viewHolder.adapterPosition))){
-//                    viewHolder.itemView.setBackgroundColor(Color.TRANSPARENT)
-//                    selectItems.remove(differ.currentList.get(viewHolder.adapterPosition))
-//                }else{
-//                    viewHolder.itemView.setBackgroundResource(R.color.selectedColor)
-//
-//                    selectItems.add(differ.currentList.get(viewHolder.adapterPosition))
-//                }
-//
-//                if(selectItems.size==0){
-//                    isSelected=false
-//                }
-//                return true
-//            }
-//
-//            override fun onItemLongClick(
-//                p0: AdapterView<*>?,
-//                p1: View?,
-//                p2: Int,
-//                p3: Long
-//            ): Boolean {
-//               return true
-//            }
-//
-//        })
 
-//        viewHolder.itemView.setOnClickListener(object:AdapterView.OnItemClickListener,
-//            View.OnClickListener {
-//            override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onClick(p0: View?) {
-//                if(isSelected){
-//                    if(selectItems.contains(differ.currentList.get(viewHolder.adapterPosition))){
-//                        viewHolder.itemView.setBackgroundColor(Color.TRANSPARENT)
-//                        selectItems.remove(differ.currentList.get(viewHolder.adapterPosition))
-//                    }else{
-//                        viewHolder.itemView.setBackgroundResource(R.color.selectedColor)
-//
-//                        selectItems.add(differ.currentList.get(viewHolder.adapterPosition))
-//                    }
-//
-//                    if(selectItems.size==0){
-//                        isSelected=false
-//                    }
-//                }else{
-//
-//                }
-//            }
-//
-//        })
 
         viewHolder.binding.runCardView.setOnClickListener {
             listner.onClick(differ.currentList[viewHolder.adapterPosition], viewHolder.itemView)

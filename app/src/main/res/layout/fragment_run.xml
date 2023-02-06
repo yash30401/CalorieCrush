@@ -39,6 +39,7 @@
                 android:textColor="@color/bottomBarDark"
                 android:includeFontPadding="false"
                 android:textSize="18sp"
+                android:layout_gravity="center_vertical"
                 android:fontFamily="@font/poppins"
                 android:layout_height="wrap_content"/>
 
@@ -46,9 +47,18 @@
                 android:id="@+id/spinFilter"
                 android:layout_width="100dp"
                 android:backgroundTint="@color/black"
+                android:layout_gravity="center_vertical"
                 android:entries="@array/spinSortedValue"
                 android:layout_height="wrap_content"/>
 
+            <ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:src="@drawable/baseline_delete_24"
+                android:background="@android:color/transparent"
+                android:layout_marginRight="10dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
