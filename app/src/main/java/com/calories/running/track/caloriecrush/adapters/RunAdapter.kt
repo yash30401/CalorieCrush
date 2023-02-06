@@ -17,6 +17,8 @@ import java.util.*
 
 class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
+    var isSelected=false
+
     inner class RunViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding = RunLayoutBinding.bind(itemView)
     }
