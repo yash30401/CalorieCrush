@@ -191,7 +191,7 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
     ) {
         isSelected = true
         binding.btnDelete.visibility=View.VISIBLE
-        binding.btnDelete.animation=AnimationUtils.loadAnimation(context,R.anim.slide_left)
+        binding.btnDelete.animation=AnimationUtils.loadAnimation(context,R.anim.delete_slide_left)
         if (selectedItems.contains(run)) {
             itemView.setBackgroundColor(Color.TRANSPARENT)
             selectedItems.remove(run)
