@@ -17,6 +17,7 @@ class RunningViewmodel(application: Application) : AndroidViewModel(application)
     private val repository: RunningRepository
      val allRuns: LiveData<List<Run>>
      val allRunsSortedByDate: LiveData<List<Run>>
+    val allRunsSortedByDateASC:LiveData<List<Run>>
      val allRunsSortedByDistance: LiveData<List<Run>>
      val allRunsSortedByCalBurned: LiveData<List<Run>>
      val allRunsSortedByTimeInMillis: LiveData<List<Run>>
@@ -31,6 +32,7 @@ class RunningViewmodel(application: Application) : AndroidViewModel(application)
         repository = RunningRepository(dao)
         allRuns = repository.allRuns
         allRunsSortedByDate = repository.allRunsSortedByDate
+        allRunsSortedByDateASC=repository.allRunsSortedByDateASC
         allRunsSortedByDistance = repository.allRunsSortedByDistance
         allRunsSortedByCalBurned = repository.allRunsSortedByCalBurned
         allRunsSortedByTimeInMillis = repository.allRunsSortedByTimeInMillis

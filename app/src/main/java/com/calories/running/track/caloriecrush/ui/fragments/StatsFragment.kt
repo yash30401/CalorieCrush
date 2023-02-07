@@ -53,7 +53,7 @@ class StatsFragment : Fragment(R.layout.fragment_stats) {
     }
 
     private fun setupChart(){
-        runViewModel.allRunsSortedByDate.observe(viewLifecycleOwner, Observer {
+        runViewModel.allRunsSortedByDateASC.observe(viewLifecycleOwner, Observer {
             it?.let {
                 val avgSpeed = it.mapIndexed { index, run ->
                     com.github.mikephil.charting.data.Entry(index.toFloat(), run.avgSpeedInKMH.toFloat())

@@ -14,6 +14,7 @@ class StatsViewModel(application: Application):AndroidViewModel(application) {
 
      val repository: RunningRepository
      val allRunsSortedByDate: LiveData<List<Run>>
+     val allRunsSortedByDateASC:LiveData<List<Run>>
      val getTotalTimeInMillis: LiveData<Long>
      val getTotalCaloriesBurned: LiveData<Int>
      val getTotalDistance: LiveData<Int>
@@ -25,6 +26,7 @@ class StatsViewModel(application: Application):AndroidViewModel(application) {
         repository = RunningRepository(dao)
 
         allRunsSortedByDate=repository.allRunsSortedByDate
+        allRunsSortedByDateASC=repository.allRunsSortedByDateASC
         getTotalTimeInMillis=repository.getTotalTimeInMillis
         getTotalCaloriesBurned=repository.getTotalCaloriesBurned
         getTotalDistance=repository.getTotalDistance
@@ -32,7 +34,4 @@ class StatsViewModel(application: Application):AndroidViewModel(application) {
 
         }
 
-    fun getdat()=viewModelScope.launch {
-
-    }
 }

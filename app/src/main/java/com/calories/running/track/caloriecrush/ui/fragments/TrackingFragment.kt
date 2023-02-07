@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -74,7 +76,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             if (TrackingUtility.isLocationEnabled(requireContext()) == true) {
                 toggleRun()
                 binding.cancelRun.visibility = View.VISIBLE
-                binding.cancelRun.animation=AnimationUtils.loadAnimation(context,R.anim.slide_left)
+
             }else{
                 Toast.makeText(context, "Please Enable Location", Toast.LENGTH_SHORT).show()
             }
@@ -204,6 +206,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             binding.btnFinish.visibility = View.VISIBLE
         } else {
             sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+            binding.cancelRun.animation=AnimationUtils.loadAnimation(context,R.anim.slide_left)
         }
     }
 

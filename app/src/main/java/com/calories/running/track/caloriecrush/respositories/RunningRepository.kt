@@ -8,6 +8,7 @@ class RunningRepository(private val runDao: RunDao) {
 
     val allRuns:LiveData<List<Run>> = runDao.getAllRunsSortedByDistance()
     val allRunsSortedByDate:LiveData<List<Run>> = runDao.getAllRunsSortedByDate()
+    val allRunsSortedByDateASC:LiveData<List<Run>> = runDao.getAllRunsSortedByDateASC()
     val allRunsSortedByDistance:LiveData<List<Run>> = runDao.getAllRunsSortedByDistance()
     val allRunsSortedByCalBurned:LiveData<List<Run>> = runDao.getAllRunsSorteByCaloriesBurned()
     val allRunsSortedByTimeInMillis:LiveData<List<Run>> = runDao.getAllRunsSortedByTimeInMillis()

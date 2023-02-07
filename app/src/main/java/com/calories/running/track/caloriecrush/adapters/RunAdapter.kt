@@ -61,6 +61,7 @@ class RunAdapter(val listner: onItemClick, val longClickListner: onLongClickInte
 
         }
 
+
         return viewHolder
     }
 
@@ -99,7 +100,10 @@ class RunAdapter(val listner: onItemClick, val longClickListner: onLongClickInte
             )
         )
     }
+
 }
+
+
 
 interface onItemClick {
     fun onClick(

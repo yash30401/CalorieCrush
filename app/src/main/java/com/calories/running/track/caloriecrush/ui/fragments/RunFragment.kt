@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.AdapterView
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -107,6 +109,11 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
                 })
                 .setPositiveButton("Yes",DialogInterface.OnClickListener { dialogInterface, i ->
                     viewModel.deleteRun(selectedItems)
+                    if(viewModel.deleteRun(selectedItems).isCompleted){
+                        isSelected=false
+                        selectedItems.clear()
+
+                    }
                     binding.btnDelete.visibility=View.GONE
                 })
 
