@@ -66,6 +66,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
         binding.mapView.onCreate(savedInstanceState)
 
+        //Animation On Button
         binding.btnStart.animation=AnimationUtils.loadAnimation(context,R.anim.slide_up)
 
         checkPermissionGranted()
