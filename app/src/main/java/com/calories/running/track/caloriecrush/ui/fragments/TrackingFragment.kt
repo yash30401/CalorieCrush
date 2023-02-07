@@ -75,6 +75,8 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
                 toggleRun()
                 binding.cancelRun.visibility = View.VISIBLE
                 binding.cancelRun.animation=AnimationUtils.loadAnimation(context,R.anim.slide_left)
+            }else{
+                Toast.makeText(context, "Please Enable Location", Toast.LENGTH_SHORT).show()
             }
         }
 
