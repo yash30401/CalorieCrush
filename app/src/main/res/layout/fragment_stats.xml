@@ -149,7 +149,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
-        app:layout_constraintGuide_percent="0.37" />
+        app:layout_constraintGuide_end="510dp" />
 
     <ImageView
         android:id="@+id/imageView2"
