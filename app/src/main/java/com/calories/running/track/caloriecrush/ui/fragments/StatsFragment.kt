@@ -52,6 +52,7 @@ class StatsFragment : Fragment(R.layout.fragment_stats) {
 
     }
 
+    //Setting Up Chart Getting Values And Plotting Them On The Graph
     private fun setupChart(){
         runViewModel.allRunsSortedByDateASC.observe(viewLifecycleOwner, Observer {
             it?.let {
