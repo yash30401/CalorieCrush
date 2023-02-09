@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
+        app:cardElevation="5dp"
         android:layout_marginEnd="10dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +27,7 @@
             android:id="@+id/mapView"
             android:layout_width="match_parent"
 
-            android:layout_height="390dp"
+            android:layout_height="350dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
