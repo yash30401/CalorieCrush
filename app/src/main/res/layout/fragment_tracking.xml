@@ -14,25 +14,26 @@
         android:id="@+id/cancelRun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:background="@android:color/transparent"
         android:foreground="?attr/selectableItemBackground"
         android:src="@drawable/baseline_clear_24"
         android:tooltipText="Cancel Run"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:scrollbarSize="1dp"
 
         android:scrollbarThumbVertical="@color/bottomBarDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/cancelRun">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginEnd="10dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="5dp">
@@ -70,11 +71,11 @@
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
-                    app:cardElevation="2dp"
-                    app:rippleColor="@color/white"
                     android:clickable="true"
                     app:cardBackgroundColor="@color/trackingChipColorBG"
-                    app:cardCornerRadius="30dp">
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="2dp"
+                    app:rippleColor="@color/white">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -116,11 +117,11 @@
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    app:cardElevation="2dp"
-                    app:rippleColor="@color/white"
                     android:clickable="true"
                     app:cardBackgroundColor="@color/trackingChipColorBG"
-                    app:cardCornerRadius="30dp">
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="2dp"
+                    app:rippleColor="@color/white">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -163,9 +164,9 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                app:cardCornerRadius="10dp"
+                android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/spotifyBgColor"
-                android:layout_margin="10dp">
+                app:cardCornerRadius="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -180,7 +181,7 @@
                         android:layout_marginTop="25dp"
                         android:layout_marginBottom="25dp"
 
-                      android:background="@android:color/transparent"
+                        android:background="@android:color/transparent"
                         android:src="@drawable/icon_awesome_pause"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -193,10 +194,10 @@
                         android:layout_marginStart="111dp"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="108dp"
-                        android:text="Fight Back"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/poppins_medium"
                         android:letterSpacing="0.03"
+                        android:text="Fight Back"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toStartOf="@+id/imageView9"
@@ -209,8 +210,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@android:color/transparent"
                         android:layout_marginBottom="25dp"
+                        android:background="@android:color/transparent"
                         android:src="@drawable/icon_material_skip_next"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -220,9 +221,9 @@
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
                         android:text="NEFFEX"
                         android:textAllCaps="true"
-                        android:fontFamily="@font/poppins"
                         android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="@+id/textView"
                         app:layout_constraintStart_toStartOf="@+id/textView"
@@ -235,7 +236,7 @@
                 android:id="@+id/timeTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/poppins"
                 android:includeFontPadding="false"
                 android:text="00:00:00:00"
@@ -249,7 +250,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="5dp"
                 android:backgroundTint="@color/mainLightPurple"
                 android:includeFontPadding="false"
                 android:padding="15dp"
@@ -261,6 +262,7 @@
                 android:id="@+id/btnFinish"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/mainLightPurple"
                 android:includeFontPadding="false"
