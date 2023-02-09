@@ -161,76 +161,7 @@
 
             </LinearLayout>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/spotifyBgColor"
-                app:cardCornerRadius="10dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-
-                    <ImageButton
-                        android:id="@+id/imageView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginBottom="25dp"
-
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/icon_awesome_pause"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="111dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="108dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:letterSpacing="0.03"
-                        android:text="Fight Back"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView9"
-                        app:layout_constraintStart_toEndOf="@+id/imageView8"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageButton
-                        android:id="@+id/imageView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="25dp"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/icon_material_skip_next"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="NEFFEX"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        app:layout_constraintEnd_toEndOf="@+id/textView"
-                        app:layout_constraintStart_toStartOf="@+id/textView"
-                        app:layout_constraintTop_toBottomOf="@+id/textView" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/timeTextView"
