@@ -118,7 +118,7 @@
                     android:layout_marginLeft="20dp"
                     app:cardElevation="2dp"
                     app:rippleColor="@color/white"
-
+                    android:clickable="true"
                     app:cardBackgroundColor="@color/trackingChipColorBG"
                     app:cardCornerRadius="30dp">
 
@@ -159,6 +159,22 @@
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/spotifyBgColor"
+                android:layout_margin="10dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/timeTextView"
