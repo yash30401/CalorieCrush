@@ -4,97 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="20dp"
-    android:clickable="true"
-    android:focusable="true"
     android:background="@color/white"
+    android:clickable="true"
+    android:elevation="20dp"
+    android:focusable="true"
     tools:context=".ui.fragments.TrackingFragment">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mapViewCardView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        app:cardElevation="5dp"
-        android:layout_marginEnd="10dp"
-        app:cardCornerRadius="20dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
+        <LinearLayout
             android:layout_width="match_parent"
-
-            android:layout_height="350dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/timeTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins"
-        android:includeFontPadding="false"
-        android:text="00:00:00:00"
-        android:textAlignment="center"
-        android:textColor="@color/timerColor"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapViewCardView" />
-
-    <Button
-        android:id="@+id/btnStart"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/mainLightPurple"
-        android:includeFontPadding="false"
-        android:padding="15dp"
-        android:text="@string/start"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeTextView" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mapViewCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="350dp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/timeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:text="00:00:00:00"
+                android:textAlignment="center"
+
+                android:textColor="@color/timerColor"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/mainLightPurple"
+                android:includeFontPadding="false"
+                android:padding="15dp"
+                android:text="@string/start"
+                app:cornerRadius="10dp"
+                android:layout_gravity="center_horizontal"
+                />
 
 
-    <Button
-        android:id="@+id/btnFinish"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/mainLightPurple"
-        android:includeFontPadding="false"
-        android:visibility="gone"
-        android:padding="15dp"
-        android:text="@string/finish"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+            <Button
+                android:id="@+id/btnFinish"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/mainLightPurple"
+                android:includeFontPadding="false"
+                android:padding="15dp"
+                android:text="@string/finish"
+                android:visibility="gone"
+                app:cornerRadius="10dp" />
 
-    <ImageButton
-        android:id="@+id/cancelRun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
-        android:tooltipText="Cancel Run"
-        android:layout_marginEnd="25dp"
-        android:background="@android:color/transparent"
-        android:foreground="?attr/selectableItemBackground"
-        android:src="@drawable/baseline_clear_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+            <ImageButton
+                android:id="@+id/cancelRun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:background="@android:color/transparent"
+                android:foreground="?attr/selectableItemBackground"
+                android:src="@drawable/baseline_clear_24"
+                android:tooltipText="Cancel Run"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

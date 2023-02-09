@@ -29,4 +29,7 @@
     <color name="chartcolortimeRanfill">#ED9616</color>
 
     <color name="selectedColor">#859185CE</color>
+    <color name="trackingChipColorBG">#7E69E0</color>
+    <color name="spotifyBgColor">#7E69E0</color>
+
 </resources>
