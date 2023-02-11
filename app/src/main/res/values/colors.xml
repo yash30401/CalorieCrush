@@ -31,5 +31,7 @@
     <color name="selectedColor">#859185CE</color>
     <color name="trackingChipColorBG">#C77E69E0</color>
     <color name="spotifyBgColor">#DAD4F7</color>
+    <color name="settingCardViewBg">#F5F5F5</color>
+    <color name="settingTextView">#3F3F3F</color>
 
 </resources>
