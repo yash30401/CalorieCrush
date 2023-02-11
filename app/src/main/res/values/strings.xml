@@ -34,5 +34,5 @@
     <string name="total_distance">Total Distance</string>
     <string name="totalCalBurned">Total Calories Burned</string>
     <string name="avgSpeed">Average Speed</string>
-
+    <string name="applyChanges">Apply Changes</string>
 </resources>
