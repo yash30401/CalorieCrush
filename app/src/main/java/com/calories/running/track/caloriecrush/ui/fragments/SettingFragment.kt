@@ -40,6 +40,15 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
             manager.showSoftInput(binding.etName,0)
         }
 
+        binding.cvWeight.setOnClickListener {
+
+            binding.etWeight.focusable = View.FOCUSABLE
+            binding.etWeight.isFocusableInTouchMode=true
+            binding.etWeight.requestFocus()
+            val manager:InputMethodManager= activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            manager.showSoftInput(binding.etWeight,0)
+        }
+
     }
 
     private fun setupSettingScreen() {
