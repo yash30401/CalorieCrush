@@ -44,12 +44,13 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="34dp"
                 android:layout_marginBottom="34dp"
+                android:focusable="false"
+                android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_medium"
                 android:includeFontPadding="false"
+                android:inputType="text"
                 android:letterSpacing="0.04"
                 android:text="Yash"
-                android:inputType="text"
-                android:background="@android:color/transparent"
                 android:textColor="@color/settingTextView"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -122,25 +123,45 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/tvWeight"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="34dp"
-                android:layout_marginBottom="34dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/poppins_medium"
-                android:includeFontPadding="false"
-                android:inputType="text"
-                android:letterSpacing="0.04"
-                android:text="80 Kg"
-                android:textColor="@color/settingTextView"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView7"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/tvWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginBottom="34dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_medium"
+                    android:includeFontPadding="false"
+                    android:inputType="numberDecimal"
+                    android:letterSpacing="0.04"
+                    android:text="80"
+                    android:focusable="false"
+                    android:textColor="@color/settingTextView"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/weightUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginBottom="34dp"
+                    android:textColor="@color/settingTextView"
+                    android:textSize="20sp"
+                    android:letterSpacing="0.04"
+                    android:textStyle="bold"
+                    android:text="Kg"/>
+            </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvWeight"
@@ -183,9 +204,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/mainLightPurple"
-        android:text="@string/applyChanges"
         android:includeFontPadding="false"
         android:padding="15dp"
+        android:text="@string/applyChanges"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
