@@ -126,17 +126,24 @@ class SetupActivity : AppCompatActivity() {
 
             if(binding.kgChip.isChecked){
                 weightInKg = binding.numberPicker.value.toFloat()
+                preferences.edit {
+                    this.putBoolean("first_launch", false).apply()
+                    this.putString("user_name",binding.etName.editText?.text.toString()).apply()
+                    this.putString("weight_unit","Kg").apply()
+                    this.putFloat("weight",weightInKg!!).apply()
+                }
             }else if(binding.poundsChip.isChecked){
                 weightInKg = (binding.numberPicker.value.toFloat())/2.20462f
+                preferences.edit {
+                    this.putBoolean("first_launch", false).apply()
+                    this.putString("user_name",binding.etName.editText?.text.toString()).apply()
+                    this.putString("weight_unit","Pounds").apply()
+                    this.putFloat("weight",weightInKg!!).apply()
+                }
             }
 
 
-            preferences.edit {
-                this.putBoolean("first_launch", false).apply()
-                this.putString("user_name",binding.etName.editText?.text.toString()).apply()
-                this.putString("weight_unit",binding.chipGroup.checkedChipId.toString()).apply()
-                this.putFloat("weight",weightInKg!!).apply()
-            }
+
 
             val intent=Intent(this,MainActivity::class.java)
             startActivity(intent)

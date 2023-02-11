@@ -50,7 +50,7 @@
                 android:includeFontPadding="false"
                 android:inputType="text"
                 android:letterSpacing="0.04"
-                android:text="Yash"
+
                 android:textColor="@color/settingTextView"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -132,7 +132,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
-                    android:id="@+id/tvWeight"
+                    android:id="@+id/etWeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -143,7 +143,7 @@
                     android:includeFontPadding="false"
                     android:inputType="numberDecimal"
                     android:letterSpacing="0.04"
-                    android:text="80"
+
                     android:focusable="false"
                     android:textColor="@color/settingTextView"
                     android:textSize="20sp"
