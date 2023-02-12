@@ -1,7 +1,9 @@
 package com.calories.running.track.caloriecrush.ui.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -75,6 +77,24 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
             }
         }
 
+
+        binding.cvRateUs.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id= com.calories.running.track.caloriecrush")))
+        }
+
+        binding.cvContactUs.setOnClickListener {
+            val intent=Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto","yashquery30401@gmail.com",null))
+            startActivity(Intent.createChooser(intent,"Send Mail..."))
+        }
+
+        binding.cvPrivacyPolicy.setOnClickListener {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://docs.google.com/document/d/1yvdeVZd3pochir0ZXiubdfoDbHsXlRoiyjDpQ6UU9lU/")
+                )
+            )
+        }
 
     }
 
