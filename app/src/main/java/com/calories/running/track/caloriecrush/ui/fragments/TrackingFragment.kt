@@ -266,6 +266,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             val run = Run(bmp,dateTimeStamp,avgSpeed,distanceInMeters,currTimeMillis,caloriesBurned)
             viewmodel.insertRun(run)
             fragmentManager?.popBackStack()
+
             Toast.makeText(context, "Run Saved", Toast.LENGTH_SHORT).show()
             Log.d("SAVED","SAVED")
             stopRun()

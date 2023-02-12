@@ -19,6 +19,34 @@
         app:tint="@color/white" />
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/anim"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/run_anim"
+
+        app:lottie_autoPlay="true" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textSize="25sp"
+        android:textColor="@color/hintColor"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:text="No Activity!"/>
+
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -64,7 +92,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRuns"
         android:layout_width="match_parent"
-        tools:listitem="@layout/run_layout"
         android:layout_marginBottom="80dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="match_parent"/>

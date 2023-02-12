@@ -93,6 +93,14 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
 
         viewModel.runs.observe(viewLifecycleOwner, Observer {
             runAdapter.submitList(it)
+
+            if(it.size==0){
+                binding.anim.visibility=View.VISIBLE
+                binding.tvEmpty.visibility=View.VISIBLE
+            }else{
+                binding.anim.visibility=View.GONE
+                binding.tvEmpty.visibility=View.GONE
+            }
         })
 
         fragment = requireActivity().supportFragmentManager
@@ -109,6 +117,7 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
                 })
                 .setPositiveButton("Yes",DialogInterface.OnClickListener { dialogInterface, i ->
                     viewModel.deleteRun(selectedItems)
+                    runAdapter.notifyDataSetChanged()
                     if(viewModel.deleteRun(selectedItems).isCompleted){
                         isSelected=false
                         selectedItems.clear()
