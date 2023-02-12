@@ -37,44 +37,43 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
 
         binding.cvName.setOnClickListener {
 
-                if (binding.ivCheck.isVisible==false) {
-                    binding.etName.focusable = View.FOCUSABLE
-                    binding.etName.isFocusableInTouchMode = true
-                    binding.etName.requestFocus()
-                    val manager: InputMethodManager =
-                        activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    manager.showSoftInput(binding.etName, 0)
-                    binding.ivPencil.visibility=View.GONE
-                    binding.ivCheck.visibility=View.VISIBLE
-                } else {
-                    applyChangesToPrefs()
-                    binding.etName.clearFocus()
-                    binding.ivPencil.visibility=View.VISIBLE
-                    binding.ivCheck.visibility=View.GONE
-                    Toast.makeText(context, "Changes Saved", Toast.LENGTH_SHORT).show()
-                }
+            if (binding.ivCheck.isVisible == false) {
+                binding.etName.focusable = View.FOCUSABLE
+                binding.etName.isFocusableInTouchMode = true
+                binding.etName.requestFocus()
+                val manager: InputMethodManager =
+                    activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                manager.showSoftInput(binding.etName, 0)
+                binding.ivPencil.visibility = View.GONE
+                binding.ivCheck.visibility = View.VISIBLE
+            } else {
+                applyChangesToPrefs()
+                binding.etName.clearFocus()
+                binding.ivPencil.visibility = View.VISIBLE
+                binding.ivCheck.visibility = View.GONE
+                Toast.makeText(context, "Changes Saved", Toast.LENGTH_SHORT).show()
+            }
 
         }
 
         binding.cvWeight.setOnClickListener {
-            if (binding.ivCheck2.isVisible==false) {
+            if (binding.ivCheck2.isVisible == false) {
                 binding.etWeight.focusable = View.FOCUSABLE
                 binding.etWeight.isFocusableInTouchMode = true
                 binding.etWeight.requestFocus()
                 val manager: InputMethodManager =
                     activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 manager.showSoftInput(binding.etWeight, 0)
-                binding.ivPencil2.visibility=View.GONE
-                binding.ivCheck2.visibility=View.VISIBLE
+                binding.ivPencil2.visibility = View.GONE
+                binding.ivCheck2.visibility = View.VISIBLE
             } else {
                 applyChangesToPrefs()
                 binding.etWeight.clearFocus()
-                binding.ivPencil2.visibility=View.VISIBLE
-                binding.ivCheck2.visibility=View.GONE
+                binding.ivPencil2.visibility = View.VISIBLE
+                binding.ivCheck2.visibility = View.GONE
                 Toast.makeText(context, "Changes Saved", Toast.LENGTH_SHORT).show()
             }
         }
-
 
 
     }
