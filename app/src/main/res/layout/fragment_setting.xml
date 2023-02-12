@@ -192,11 +192,23 @@
                 app:rippleColor="@color/settingCardViewBg">
 
                 <ImageView
+                    android:id="@+id/ivPencil2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
 
                     android:src="@drawable/icon_awesome_pencil_alt"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivCheck2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:visibility="gone"
+                    android:src="@drawable/baseline_check_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -208,21 +220,6 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <Button
-        android:id="@+id/btnApplyChanges"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/mainLightPurple"
-        android:includeFontPadding="false"
-        android:padding="15dp"
-        android:text="@string/applyChanges"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,18 +57,24 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
         }
 
         binding.cvWeight.setOnClickListener {
-
-            binding.etWeight.focusable = View.FOCUSABLE
-            binding.etWeight.isFocusableInTouchMode = true
-            binding.etWeight.requestFocus()
-            val manager: InputMethodManager =
-                activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            manager.showSoftInput(binding.etWeight, 0)
+            if (binding.ivCheck2.isVisible==false) {
+                binding.etWeight.focusable = View.FOCUSABLE
+                binding.etWeight.isFocusableInTouchMode = true
+                binding.etWeight.requestFocus()
+                val manager: InputMethodManager =
+                    activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                manager.showSoftInput(binding.etWeight, 0)
+                binding.ivPencil2.visibility=View.GONE
+                binding.ivCheck2.visibility=View.VISIBLE
+            } else {
+                applyChangesToPrefs()
+                binding.etWeight.clearFocus()
+                binding.ivPencil2.visibility=View.VISIBLE
+                binding.ivCheck2.visibility=View.GONE
+                Toast.makeText(context, "Changes Saved", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        binding.btnApplyChanges.setOnClickListener {
-            applyChangesToPrefs()
-        }
 
 
     }
