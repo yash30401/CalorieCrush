@@ -15,6 +15,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.edit
+import androidx.core.view.isVisible
 import com.calories.running.track.caloriecrush.R
 import com.calories.running.track.caloriecrush.databinding.FragmentSettingBinding
 
@@ -36,12 +37,23 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
 
         binding.cvName.setOnClickListener {
 
-            binding.etName.focusable = View.FOCUSABLE
-            binding.etName.isFocusableInTouchMode = true
-            binding.etName.requestFocus()
-            val manager: InputMethodManager =
-                activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            manager.showSoftInput(binding.etName, 0)
+                if (binding.ivCheck.isVisible==false) {
+                    binding.etName.focusable = View.FOCUSABLE
+                    binding.etName.isFocusableInTouchMode = true
+                    binding.etName.requestFocus()
+                    val manager: InputMethodManager =
+                        activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    manager.showSoftInput(binding.etName, 0)
+                    binding.ivPencil.visibility=View.GONE
+                    binding.ivCheck.visibility=View.VISIBLE
+                } else {
+                    applyChangesToPrefs()
+                    binding.etName.clearFocus()
+                    binding.ivPencil.visibility=View.VISIBLE
+                    binding.ivCheck.visibility=View.GONE
+                    Toast.makeText(context, "Changes Saved", Toast.LENGTH_SHORT).show()
+                }
+
         }
 
         binding.cvWeight.setOnClickListener {
@@ -58,6 +70,7 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
             applyChangesToPrefs()
         }
 
+
     }
 
     private fun applyChangesToPrefs() {
@@ -72,15 +85,14 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
             }
 
         } else {
-            val weightInPounds = binding.etWeight.text.toString().toFloat()/2.20462f
+            val weightInPounds = binding.etWeight.text.toString().toFloat() / 2.20462f
             sharerdPreferences?.edit {
                 this.putString("user_name", binding.etName.text.toString()).apply()
-                this.putFloat("weight",weightInPounds).apply()
+                this.putFloat("weight", weightInPounds).apply()
             }
         }
-        binding.etName.clearFocus()
-        binding.etWeight.clearFocus()
-        Toast.makeText(context, "Changes Saved", Toast.LENGTH_SHORT).show()
+
+
     }
 
     private fun setupSettingScreen() {
