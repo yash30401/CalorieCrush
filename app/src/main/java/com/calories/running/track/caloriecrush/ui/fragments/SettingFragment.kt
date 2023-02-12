@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
@@ -36,6 +37,8 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
 
         sharerdPreferences = context?.getSharedPreferences("PREF", Context.MODE_PRIVATE)
         setupSettingScreen()
+
+        binding.linLayout.animation=AnimationUtils.loadAnimation(context,R.anim.slide_up)
 
         binding.cvName.setOnClickListener {
 

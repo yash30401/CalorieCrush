@@ -1,11 +1,13 @@
 package com.calories.running.track.caloriecrush.DB
 
 import android.graphics.Bitmap
+import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 
+@Keep
 @Entity(tableName = "running_table")
 @TypeConverters(Converters::class)
 data class Run(
