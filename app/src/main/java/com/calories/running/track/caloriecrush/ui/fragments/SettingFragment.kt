@@ -40,6 +40,9 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
 
         binding.linLayout.animation=AnimationUtils.loadAnimation(context,R.anim.slide_up)
 
+
+
+        //Changin name data
         binding.cvName.setOnClickListener {
 
             if (binding.ivCheck.isVisible == false) {
@@ -61,6 +64,7 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
 
         }
 
+        //Chaning weight data
         binding.cvWeight.setOnClickListener {
             if (binding.ivCheck2.isVisible == false) {
                 binding.etWeight.focusable = View.FOCUSABLE
@@ -101,6 +105,8 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
 
     }
 
+    //Apply Changes to Prefs When User changes details like name and weight.
+
     private fun applyChangesToPrefs() {
         val weightUnit = sharerdPreferences?.getString("weight_unit", "-1")
 
@@ -123,6 +129,7 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
 
     }
 
+    //Setting Up Setting Screen by fetching Preferences and show them on screen
     private fun setupSettingScreen() {
 
 
