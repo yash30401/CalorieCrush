@@ -60,10 +60,10 @@ class SetupActivity : AppCompatActivity() {
         binding.kgChip.setOnClickListener {
             binding.poundsChip.isChecked=false
             binding.poundsChip.chipStrokeColor =
-                ColorStateList.valueOf(resources.getColor(R.color.hintColor))
+                ColorStateList.valueOf(resources.getColor(R.color.chipStrokeColor))
             binding.poundsChip.chipBackgroundColor =
                 ColorStateList.valueOf(resources.getColor(com.google.android.material.R.color.mtrl_btn_transparent_bg_color))
-            binding.poundsChip.setTextColor(resources.getColor(R.color.black))
+            binding.poundsChip.setTextColor(resources.getColor(R.color.chipTextColor))
 
 
 
@@ -83,10 +83,10 @@ class SetupActivity : AppCompatActivity() {
 
             binding.kgChip.isChecked=false
             binding.kgChip.chipStrokeColor =
-                ColorStateList.valueOf(resources.getColor(R.color.hintColor))
+                ColorStateList.valueOf(resources.getColor(R.color.chipStrokeColor))
             binding.kgChip.chipBackgroundColor =
                 ColorStateList.valueOf(resources.getColor(com.google.android.material.R.color.mtrl_btn_transparent_bg_color))
-            binding.kgChip.setTextColor(resources.getColor(R.color.black))
+            binding.kgChip.setTextColor(resources.getColor(R.color.chipTextColor))
 
             binding.poundsChip.isChecked=true
 

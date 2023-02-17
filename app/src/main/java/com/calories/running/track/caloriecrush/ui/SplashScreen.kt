@@ -18,7 +18,7 @@ class SplashScreen : AppCompatActivity() {
 
         Handler().postDelayed({
             // Start main activity
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, SetupActivity::class.java))
             finish()
         }, SPLASH_DISPLAY_VAL.toLong())
 

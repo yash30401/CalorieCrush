@@ -34,4 +34,8 @@
     <color name="settingCardViewBg">#F5F5F5</color>
     <color name="settingTextView">#3F3F3F</color>
 
+    <color name="splashScreenWelcomeTextColor">#000000</color>
+    <color name="chipStrokeColor">#414141</color>
+    <color name="chipTextColor">#000</color>
+
 </resources>
