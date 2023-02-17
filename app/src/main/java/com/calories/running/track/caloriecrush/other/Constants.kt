@@ -12,6 +12,7 @@ object Constants {
     const val LOCATION_UPDATE_INTERVAL=5000L
     const val FASTEST_LOCATION_INTERVAL=2000L
     const val MAP_ZOOM=15f
+    const val SPLASH_DISPLAY_VAL=2000
 
     const val TIMER_UPDATE_INTERVAL = 50L
 
