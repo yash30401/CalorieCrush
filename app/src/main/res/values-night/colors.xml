@@ -4,4 +4,5 @@
     <color name="splashScreenWelcomeTextColor">#FFF</color>
     <color name="chipStrokeColor">#FFF</color>
     <color name="chipTextColor">#FFF</color>
+    <color name="NumberPickerDividerColor">#FFF</color>
 </resources>

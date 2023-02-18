@@ -37,5 +37,6 @@
     <color name="splashScreenWelcomeTextColor">#000000</color>
     <color name="chipStrokeColor">#414141</color>
     <color name="chipTextColor">#000</color>
+    <color name="NumberPickerDividerColor">#414141</color>
 
 </resources>

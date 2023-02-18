@@ -35,4 +35,5 @@
     <string name="totalCalBurned">Total Calories Burned</string>
     <string name="avgSpeed">Average Speed</string>
     <string name="applyChanges">Apply Changes</string>
+    <string name="NestedScroll">Nested ScrollView</string>
 </resources>
