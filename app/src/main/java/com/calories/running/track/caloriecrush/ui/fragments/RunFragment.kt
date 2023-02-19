@@ -46,6 +46,8 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
         requestLocationPermissions()
         viewModel = ViewModelProvider(this).get(RunningViewmodel::class.java)
         setupRecyclerView()
+        binding.nestedScrollView.isFillViewport = true
+        binding.nestedScrollView.isNestedScrollingEnabled = true
 
         when (viewModel.sortType) {
             SortType.DATE -> binding.spinFilter.setSelection(0)
@@ -135,6 +137,7 @@ class RunFragment : Fragment(R.layout.fragment_run), onItemClick, onLongClickInt
     private fun setupRecyclerView() = binding.rvRuns.apply {
         runAdapter = RunAdapter(this@RunFragment, this@RunFragment)
         adapter = runAdapter
+        isNestedScrollingEnabled = false
         layoutManager = LinearLayoutManager(requireContext())
 
     }

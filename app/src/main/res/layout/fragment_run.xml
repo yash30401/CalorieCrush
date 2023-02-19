@@ -18,86 +18,101 @@
         app:srcCompat="@drawable/baseline_add_24"
         app:tint="@color/white" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="20dp"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/anim"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/run_anim"
-
-        app:lottie_autoPlay="true" />
-
-    <TextView
-        android:id="@+id/tvEmpty"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:includeFontPadding="false"
-        android:textSize="25sp"
-        android:textColor="@color/hintColor"
-        android:layout_marginTop="20dp"
-        android:textAlignment="center"
-        android:text="No Activity!"/>
+        android:layout_height="match_parent"
+        android:contentDescription="@string/NestedScroll"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:elevation="20dp"
+            android:visibility="gone"
+            android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:text="@string/sortBy"
-                android:textColor="@color/bottomBarDark"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/anim"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+
+                app:lottie_rawRes="@raw/run_anim" />
+
+            <TextView
+                android:id="@+id/tvEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:includeFontPadding="false"
-                android:textSize="18sp"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/poppins"
-                android:layout_height="wrap_content"/>
-
-            <Spinner
-                android:id="@+id/spinFilter"
-                android:layout_width="100dp"
-                android:backgroundTint="@color/black"
-                android:layout_gravity="center_vertical"
-                android:entries="@array/spinSortedValue"
-                android:layout_height="wrap_content"/>
-
-            <ImageButton
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:src="@drawable/baseline_delete_24"
-                android:background="@android:color/transparent"
-                android:layout_marginRight="10dp"
-                android:visibility="gone"
-                android:layout_height="wrap_content"/>
+                android:text="No Activity!"
+                android:textAlignment="center"
+                android:textColor="@color/hintColor"
+                android:textSize="25sp" />
 
         </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRuns"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="match_parent"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins"
+                    android:includeFontPadding="false"
+                    android:text="@string/sortBy"
+                    android:textColor="@color/bottomBarDark"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinFilter"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:backgroundTint="@color/black"
+                    android:entries="@array/spinSortedValue" />
+
+                <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/baseline_delete_24"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRuns"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="80dp" />
+
+        </LinearLayout>
     </LinearLayout>
-
+    </androidx.core.widget.NestedScrollView>
 
 
 

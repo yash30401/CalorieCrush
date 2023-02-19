@@ -19,7 +19,7 @@ class SplashScreen : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         Handler().postDelayed({
             // Start main activity
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, SetupActivity::class.java))
             finish()
         }, SPLASH_DISPLAY_VAL.toLong())
 
